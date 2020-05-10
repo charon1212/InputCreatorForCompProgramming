@@ -9,11 +9,11 @@ namespace InputCreatorForCompProgramming
     abstract public class InputInfoBase
     {
         public string name { get; set; }
-        public InputType inputType { get; set; }
-        public InputInfoBase()
+        public InputType inputType { get; }
+        public InputInfoBase(InputType inputType)
         {
             name = "";
-            inputType = InputType.None;
+            this.inputType = inputType;
         }
 
         /// <summary>
