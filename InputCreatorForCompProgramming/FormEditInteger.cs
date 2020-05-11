@@ -12,6 +12,10 @@ namespace InputCreatorForCompProgramming
 {
     public partial class FormEditInteger : Form
     {
+
+        // 戻り値保存用のデータ
+        InputInfoInteger inputInfoInteger = null;
+
         public FormEditInteger()
         {
             InitializeComponent();
@@ -20,6 +24,60 @@ namespace InputCreatorForCompProgramming
         private void rbDivisorCustom_CheckedChanged(object sender, EventArgs e)
         {
             txtDivisorCustom.Enabled = rbDivisorCustom.Checked;
+        }
+
+        public DialogResult ShowDialog(IWin32Window owner, ref InputInfoBase inputInfo)
+        {
+            var dialogResult = this.ShowDialog(owner);
+            if (dialogResult == DialogResult.OK && inputInfoInteger != null)
+            {
+                inputInfo = this.inputInfoInteger;
+                return DialogResult.OK;
+            } else
+            {
+                return DialogResult.Cancel;
+            }
+        }
+
+        private void btnEnter_Click(object sender, EventArgs e)
+        {
+            // バリデーション
+            string validateMessage = "";
+            if (!InputInfoUtil.validateIntegerMin(txtMin.Text))
+            {
+                validateMessage += "最小値に数値を入力してください。\r\n";
+            }
+            if (!InputInfoUtil.validateIntegerMax(txtMax.Text))
+            {
+                validateMessage += "最大値に数値を入力してください。\r\n";
+            }
+            if(!rbDivisorNewLine.Checked && !rbDivisorSpace.Checked &&
+                    !rbDivisorEmpty.Checked && !rbDivisorCustom.Checked){
+                validateMessage += "区切り文字を指定してください。\r\n";
+            }
+            
+            if(validateMessage.Length > 0)
+            {
+                MessageBox.Show(validateMessage);
+                return;
+            }
+
+            // 変換
+            long min, max;
+            if(!long.TryParse(txtMin.Text, out min)) return;
+            if(!long.TryParse(txtMax.Text, out max)) return;
+            string divisor = InputInfoUtil.getDivisor(rbDivisorNewLine.Checked, rbDivisorSpace.Checked, rbDivisorEmpty.Checked, rbDivisorCustom.Checked, txtDivisorCustom.Text);
+
+            // FormEditIntegerの戻り値設定
+            var inputinfoInteger = new InputInfoInteger(min, max, divisor);
+            this.inputInfoInteger = inputinfoInteger;
+
+            // DialogResultの設定
+            this.DialogResult = DialogResult.OK;
+
+            // フォームを閉じる
+            this.Close();
+
         }
     }
 }

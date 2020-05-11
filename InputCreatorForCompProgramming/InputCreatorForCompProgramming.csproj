@@ -60,6 +60,7 @@
     </Compile>
     <Compile Include="InputInfoBase.cs" />
     <Compile Include="InputInfoInteger.cs" />
+    <Compile Include="InputInfoUtil.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="FormEditInteger.resx">

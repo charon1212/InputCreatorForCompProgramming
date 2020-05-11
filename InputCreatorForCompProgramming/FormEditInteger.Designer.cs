@@ -33,12 +33,12 @@
             this.txtMax = new System.Windows.Forms.TextBox();
             this.labelMax = new System.Windows.Forms.Label();
             this.groupDivisor = new System.Windows.Forms.GroupBox();
+            this.txtDivisorCustom = new System.Windows.Forms.TextBox();
+            this.rbDivisorSpace = new System.Windows.Forms.RadioButton();
             this.rbDivisorEmpty = new System.Windows.Forms.RadioButton();
             this.rbDivisorCustom = new System.Windows.Forms.RadioButton();
             this.rbDivisorNewLine = new System.Windows.Forms.RadioButton();
-            this.rbDivisorSpace = new System.Windows.Forms.RadioButton();
             this.txtMin = new System.Windows.Forms.TextBox();
-            this.txtDivisorCustom = new System.Windows.Forms.TextBox();
             this.groupDivisor.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -50,6 +50,7 @@
             this.btnEnter.TabIndex = 0;
             this.btnEnter.Text = "追加";
             this.btnEnter.UseVisualStyleBackColor = true;
+            this.btnEnter.Click += new System.EventHandler(this.btnEnter_Click);
             // 
             // labelMin
             // 
@@ -93,6 +94,25 @@
             this.groupDivisor.TabStop = false;
             this.groupDivisor.Text = "区切り文字";
             // 
+            // txtDivisorCustom
+            // 
+            this.txtDivisorCustom.Enabled = false;
+            this.txtDivisorCustom.Font = new System.Drawing.Font("MS UI Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.txtDivisorCustom.Location = new System.Drawing.Point(6, 83);
+            this.txtDivisorCustom.Name = "txtDivisorCustom";
+            this.txtDivisorCustom.Size = new System.Drawing.Size(156, 19);
+            this.txtDivisorCustom.TabIndex = 7;
+            // 
+            // rbDivisorSpace
+            // 
+            this.rbDivisorSpace.AutoSize = true;
+            this.rbDivisorSpace.Location = new System.Drawing.Point(77, 25);
+            this.rbDivisorSpace.Name = "rbDivisorSpace";
+            this.rbDivisorSpace.Size = new System.Drawing.Size(89, 23);
+            this.rbDivisorSpace.TabIndex = 7;
+            this.rbDivisorSpace.Text = "スペース";
+            this.rbDivisorSpace.UseVisualStyleBackColor = true;
+            // 
             // rbDivisorEmpty
             // 
             this.rbDivisorEmpty.AutoSize = true;
@@ -126,31 +146,12 @@
             this.rbDivisorNewLine.Text = "改行";
             this.rbDivisorNewLine.UseVisualStyleBackColor = true;
             // 
-            // rbDivisorSpace
-            // 
-            this.rbDivisorSpace.AutoSize = true;
-            this.rbDivisorSpace.Location = new System.Drawing.Point(77, 25);
-            this.rbDivisorSpace.Name = "rbDivisorSpace";
-            this.rbDivisorSpace.Size = new System.Drawing.Size(89, 23);
-            this.rbDivisorSpace.TabIndex = 7;
-            this.rbDivisorSpace.Text = "スペース";
-            this.rbDivisorSpace.UseVisualStyleBackColor = true;
-            // 
             // txtMin
             // 
             this.txtMin.Location = new System.Drawing.Point(84, 19);
             this.txtMin.Name = "txtMin";
             this.txtMin.Size = new System.Drawing.Size(100, 19);
             this.txtMin.TabIndex = 6;
-            // 
-            // txtDivisorCustom
-            // 
-            this.txtDivisorCustom.Enabled = false;
-            this.txtDivisorCustom.Font = new System.Drawing.Font("MS UI Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.txtDivisorCustom.Location = new System.Drawing.Point(6, 83);
-            this.txtDivisorCustom.Name = "txtDivisorCustom";
-            this.txtDivisorCustom.Size = new System.Drawing.Size(156, 19);
-            this.txtDivisorCustom.TabIndex = 7;
             // 
             // FormEditInteger
             // 
