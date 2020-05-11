@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-            this.listInputInfo = new System.Windows.Forms.ListBox();
+            this.listBoxInputInfo = new System.Windows.Forms.ListBox();
             this.panelButton = new System.Windows.Forms.Panel();
             this.btnCreateInputData = new System.Windows.Forms.Button();
             this.btnDeleteInputInfo = new System.Windows.Forms.Button();
@@ -54,7 +54,7 @@
             // 
             // splitContainer1.Panel1
             // 
-            this.splitContainer1.Panel1.Controls.Add(this.listInputInfo);
+            this.splitContainer1.Panel1.Controls.Add(this.listBoxInputInfo);
             this.splitContainer1.Panel1.Controls.Add(this.panelButton);
             // 
             // splitContainer1.Panel2
@@ -64,16 +64,16 @@
             this.splitContainer1.SplitterDistance = 464;
             this.splitContainer1.TabIndex = 0;
             // 
-            // listInputInfo
+            // listBoxInputInfo
             // 
-            this.listInputInfo.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.listInputInfo.FormattingEnabled = true;
-            this.listInputInfo.ItemHeight = 12;
-            this.listInputInfo.Location = new System.Drawing.Point(0, 0);
-            this.listInputInfo.Name = "listInputInfo";
-            this.listInputInfo.ScrollAlwaysVisible = true;
-            this.listInputInfo.Size = new System.Drawing.Size(460, 304);
-            this.listInputInfo.TabIndex = 1;
+            this.listBoxInputInfo.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.listBoxInputInfo.FormattingEnabled = true;
+            this.listBoxInputInfo.ItemHeight = 12;
+            this.listBoxInputInfo.Location = new System.Drawing.Point(0, 0);
+            this.listBoxInputInfo.Name = "listBoxInputInfo";
+            this.listBoxInputInfo.ScrollAlwaysVisible = true;
+            this.listBoxInputInfo.Size = new System.Drawing.Size(460, 304);
+            this.listBoxInputInfo.TabIndex = 1;
             // 
             // panelButton
             // 
@@ -96,6 +96,7 @@
             this.btnCreateInputData.TabIndex = 3;
             this.btnCreateInputData.Text = "入力データを生成";
             this.btnCreateInputData.UseVisualStyleBackColor = true;
+            this.btnCreateInputData.Click += new System.EventHandler(this.btnCreateInputData_Click);
             // 
             // btnDeleteInputInfo
             // 
@@ -133,6 +134,7 @@
             this.btnInteger.TabIndex = 4;
             this.btnInteger.Text = "整数";
             this.btnInteger.UseVisualStyleBackColor = true;
+            this.btnInteger.Click += new System.EventHandler(this.btnInteger_Click);
             // 
             // txtOutput
             // 
@@ -151,6 +153,7 @@
             this.Controls.Add(this.splitContainer1);
             this.Name = "FormMain";
             this.Text = "Input Creator for Competitive Programming";
+            this.Load += new System.EventHandler(this.FormMain_Load);
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel2.ResumeLayout(false);
             this.splitContainer1.Panel2.PerformLayout();
@@ -172,7 +175,7 @@
         private System.Windows.Forms.Button btnDeleteInputInfo;
         private System.Windows.Forms.Button btnEditInputInfo;
         private System.Windows.Forms.Button btnInteger;
-        private System.Windows.Forms.ListBox listInputInfo;
+        private System.Windows.Forms.ListBox listBoxInputInfo;
     }
 }
 

@@ -26,7 +26,7 @@ namespace InputCreatorForCompProgramming
             txtDivisorCustom.Enabled = rbDivisorCustom.Checked;
         }
 
-        public DialogResult ShowDialog(IWin32Window owner, ref InputInfoBase inputInfo)
+        public DialogResult ShowDialog(IWin32Window owner, out InputInfoBase inputInfo)
         {
             var dialogResult = this.ShowDialog(owner);
             if (dialogResult == DialogResult.OK && inputInfoInteger != null)
@@ -35,6 +35,7 @@ namespace InputCreatorForCompProgramming
                 return DialogResult.OK;
             } else
             {
+                inputInfo = null;
                 return DialogResult.Cancel;
             }
         }

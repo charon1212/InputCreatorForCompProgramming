@@ -58,5 +58,19 @@ namespace InputCreatorForCompProgramming
             }
         }
 
+        public static string createInputInfo(InputInfoBase inputInfoBase, Random rnd, Dictionary<string,string> arg)
+        {
+            switch (inputInfoBase.inputType)
+            {
+                case InputType.None:
+                    throw new ArgumentException("InputTypeに無効な値が設定されました。");
+                case InputType.Integer:
+                    var inputInfoInteger = (InputInfoInteger)inputInfoBase;
+                    return inputInfoInteger.createInputData(rnd, arg);
+                default:
+                    throw new ArgumentException("InputTypeに無効な値が設定されました。");
+            }
+        }
+
     }
 }
