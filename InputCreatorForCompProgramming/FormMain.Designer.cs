@@ -93,7 +93,7 @@
             this.btnCreateInputData.Location = new System.Drawing.Point(280, 94);
             this.btnCreateInputData.Name = "btnCreateInputData";
             this.btnCreateInputData.Size = new System.Drawing.Size(167, 39);
-            this.btnCreateInputData.TabIndex = 3;
+            this.btnCreateInputData.TabIndex = 0;
             this.btnCreateInputData.Text = "入力データを生成";
             this.btnCreateInputData.UseVisualStyleBackColor = true;
             this.btnCreateInputData.Click += new System.EventHandler(this.btnCreateInputData_Click);
@@ -103,7 +103,7 @@
             this.btnDeleteInputInfo.Location = new System.Drawing.Point(361, 4);
             this.btnDeleteInputInfo.Name = "btnDeleteInputInfo";
             this.btnDeleteInputInfo.Size = new System.Drawing.Size(75, 23);
-            this.btnDeleteInputInfo.TabIndex = 2;
+            this.btnDeleteInputInfo.TabIndex = 3;
             this.btnDeleteInputInfo.Text = "削除";
             this.btnDeleteInputInfo.UseVisualStyleBackColor = true;
             // 
@@ -112,7 +112,7 @@
             this.btnEditInputInfo.Location = new System.Drawing.Point(280, 3);
             this.btnEditInputInfo.Name = "btnEditInputInfo";
             this.btnEditInputInfo.Size = new System.Drawing.Size(75, 23);
-            this.btnEditInputInfo.TabIndex = 1;
+            this.btnEditInputInfo.TabIndex = 2;
             this.btnEditInputInfo.Text = "編集";
             this.btnEditInputInfo.UseVisualStyleBackColor = true;
             // 
@@ -122,7 +122,7 @@
             this.groupAddButton.Location = new System.Drawing.Point(5, 3);
             this.groupAddButton.Name = "groupAddButton";
             this.groupAddButton.Size = new System.Drawing.Size(269, 132);
-            this.groupAddButton.TabIndex = 0;
+            this.groupAddButton.TabIndex = 1;
             this.groupAddButton.TabStop = false;
             this.groupAddButton.Text = "入力情報を追加";
             // 
@@ -131,7 +131,7 @@
             this.btnInteger.Location = new System.Drawing.Point(6, 18);
             this.btnInteger.Name = "btnInteger";
             this.btnInteger.Size = new System.Drawing.Size(75, 23);
-            this.btnInteger.TabIndex = 4;
+            this.btnInteger.TabIndex = 0;
             this.btnInteger.Text = "整数";
             this.btnInteger.UseVisualStyleBackColor = true;
             this.btnInteger.Click += new System.EventHandler(this.btnInteger_Click);

@@ -47,7 +47,7 @@
             this.btnEnter.Location = new System.Drawing.Point(109, 192);
             this.btnEnter.Name = "btnEnter";
             this.btnEnter.Size = new System.Drawing.Size(75, 23);
-            this.btnEnter.TabIndex = 0;
+            this.btnEnter.TabIndex = 5;
             this.btnEnter.Text = "追加";
             this.btnEnter.UseVisualStyleBackColor = true;
             this.btnEnter.Click += new System.EventHandler(this.btnEnter_Click);
@@ -59,7 +59,7 @@
             this.labelMin.Location = new System.Drawing.Point(12, 19);
             this.labelMin.Name = "labelMin";
             this.labelMin.Size = new System.Drawing.Size(66, 19);
-            this.labelMin.TabIndex = 1;
+            this.labelMin.TabIndex = 0;
             this.labelMin.Text = "最小値";
             // 
             // txtMax
@@ -67,7 +67,7 @@
             this.txtMax.Location = new System.Drawing.Point(84, 48);
             this.txtMax.Name = "txtMax";
             this.txtMax.Size = new System.Drawing.Size(100, 19);
-            this.txtMax.TabIndex = 2;
+            this.txtMax.TabIndex = 3;
             // 
             // labelMax
             // 
@@ -76,7 +76,7 @@
             this.labelMax.Location = new System.Drawing.Point(12, 48);
             this.labelMax.Name = "labelMax";
             this.labelMax.Size = new System.Drawing.Size(66, 19);
-            this.labelMax.TabIndex = 3;
+            this.labelMax.TabIndex = 2;
             this.labelMax.Text = "最大値";
             // 
             // groupDivisor
@@ -90,7 +90,7 @@
             this.groupDivisor.Location = new System.Drawing.Point(12, 73);
             this.groupDivisor.Name = "groupDivisor";
             this.groupDivisor.Size = new System.Drawing.Size(172, 113);
-            this.groupDivisor.TabIndex = 5;
+            this.groupDivisor.TabIndex = 4;
             this.groupDivisor.TabStop = false;
             this.groupDivisor.Text = "区切り文字";
             // 
@@ -101,7 +101,7 @@
             this.txtDivisorCustom.Location = new System.Drawing.Point(6, 83);
             this.txtDivisorCustom.Name = "txtDivisorCustom";
             this.txtDivisorCustom.Size = new System.Drawing.Size(156, 19);
-            this.txtDivisorCustom.TabIndex = 7;
+            this.txtDivisorCustom.TabIndex = 4;
             // 
             // rbDivisorSpace
             // 
@@ -109,7 +109,7 @@
             this.rbDivisorSpace.Location = new System.Drawing.Point(77, 25);
             this.rbDivisorSpace.Name = "rbDivisorSpace";
             this.rbDivisorSpace.Size = new System.Drawing.Size(89, 23);
-            this.rbDivisorSpace.TabIndex = 7;
+            this.rbDivisorSpace.TabIndex = 1;
             this.rbDivisorSpace.Text = "スペース";
             this.rbDivisorSpace.UseVisualStyleBackColor = true;
             // 
@@ -119,7 +119,7 @@
             this.rbDivisorEmpty.Location = new System.Drawing.Point(6, 54);
             this.rbDivisorEmpty.Name = "rbDivisorEmpty";
             this.rbDivisorEmpty.Size = new System.Drawing.Size(60, 23);
-            this.rbDivisorEmpty.TabIndex = 8;
+            this.rbDivisorEmpty.TabIndex = 2;
             this.rbDivisorEmpty.Text = "無し";
             this.rbDivisorEmpty.UseVisualStyleBackColor = true;
             // 
@@ -129,7 +129,7 @@
             this.rbDivisorCustom.Location = new System.Drawing.Point(77, 54);
             this.rbDivisorCustom.Name = "rbDivisorCustom";
             this.rbDivisorCustom.Size = new System.Drawing.Size(85, 23);
-            this.rbDivisorCustom.TabIndex = 9;
+            this.rbDivisorCustom.TabIndex = 3;
             this.rbDivisorCustom.Text = "カスタム";
             this.rbDivisorCustom.UseVisualStyleBackColor = true;
             this.rbDivisorCustom.CheckedChanged += new System.EventHandler(this.rbDivisorCustom_CheckedChanged);
@@ -141,7 +141,7 @@
             this.rbDivisorNewLine.Location = new System.Drawing.Point(6, 25);
             this.rbDivisorNewLine.Name = "rbDivisorNewLine";
             this.rbDivisorNewLine.Size = new System.Drawing.Size(65, 23);
-            this.rbDivisorNewLine.TabIndex = 6;
+            this.rbDivisorNewLine.TabIndex = 0;
             this.rbDivisorNewLine.TabStop = true;
             this.rbDivisorNewLine.Text = "改行";
             this.rbDivisorNewLine.UseVisualStyleBackColor = true;
@@ -151,7 +151,7 @@
             this.txtMin.Location = new System.Drawing.Point(84, 19);
             this.txtMin.Name = "txtMin";
             this.txtMin.Size = new System.Drawing.Size(100, 19);
-            this.txtMin.TabIndex = 6;
+            this.txtMin.TabIndex = 1;
             // 
             // FormEditInteger
             // 
