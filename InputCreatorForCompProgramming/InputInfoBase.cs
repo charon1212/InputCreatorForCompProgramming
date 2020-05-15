@@ -26,5 +26,6 @@ namespace InputCreatorForCompProgramming
     {
         None,
         Integer,
+        List
     }
 }

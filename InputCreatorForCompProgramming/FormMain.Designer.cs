@@ -37,6 +37,7 @@
             this.groupAddButton = new System.Windows.Forms.GroupBox();
             this.btnInteger = new System.Windows.Forms.Button();
             this.txtOutput = new System.Windows.Forms.TextBox();
+            this.btnList = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -118,6 +119,7 @@
             // 
             // groupAddButton
             // 
+            this.groupAddButton.Controls.Add(this.btnList);
             this.groupAddButton.Controls.Add(this.btnInteger);
             this.groupAddButton.Location = new System.Drawing.Point(5, 3);
             this.groupAddButton.Name = "groupAddButton";
@@ -144,6 +146,16 @@
             this.txtOutput.Name = "txtOutput";
             this.txtOutput.Size = new System.Drawing.Size(328, 446);
             this.txtOutput.TabIndex = 0;
+            // 
+            // btnList
+            // 
+            this.btnList.Location = new System.Drawing.Point(87, 18);
+            this.btnList.Name = "btnList";
+            this.btnList.Size = new System.Drawing.Size(75, 23);
+            this.btnList.TabIndex = 4;
+            this.btnList.Text = "リスト";
+            this.btnList.UseVisualStyleBackColor = true;
+            this.btnList.Click += new System.EventHandler(this.btnList_Click);
             // 
             // FormMain
             // 
@@ -176,6 +188,7 @@
         private System.Windows.Forms.Button btnEditInputInfo;
         private System.Windows.Forms.Button btnInteger;
         private System.Windows.Forms.ListBox listBoxInputInfo;
+        private System.Windows.Forms.Button btnList;
     }
 }
 
