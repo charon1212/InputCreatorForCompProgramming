@@ -29,12 +29,25 @@ namespace InputCreatorForCompProgramming
             // フォームを開いて結果を受け取る
             DialogResult dialogResult = formEditInteger.ShowDialog(this, out inputInfo);
 
+            if (dialogResult == DialogResult.OK && inputInfo != null)
+            {
+                listInputInfo.Add(inputInfo);
+            }
+            showListInputInfo();
+
+        }
+        private void btnList_Click(object sender, EventArgs e)
+        {
+            InputInfoBase inputInfo = null;
+            var formEditList = new FormEditList();
+
+            // フォームを開いて結果を受け取る
+            DialogResult dialogResult = formEditList.ShowDialog(this, out inputInfo);
             if(dialogResult == DialogResult.OK && inputInfo != null)
             {
                 listInputInfo.Add(inputInfo);
             }
             showListInputInfo();
-            
         }
 
         private void btnCreateInputData_Click(object sender, EventArgs e)
@@ -42,9 +55,9 @@ namespace InputCreatorForCompProgramming
             txtOutput.Text = "";
             var rnd = new Random();
             var arg = new Dictionary<string, string>();
-            foreach(InputInfoBase inputInfo in listInputInfo)
+            foreach (InputInfoBase inputInfo in listInputInfo)
             {
-                txtOutput.Text += InputInfoUtil.createInputInfo(inputInfo,rnd,arg);
+                txtOutput.Text += InputInfoUtil.createInputInfo(inputInfo, rnd, arg);
             }
         }
 
@@ -56,10 +69,11 @@ namespace InputCreatorForCompProgramming
         private void showListInputInfo()
         {
             listBoxInputInfo.Items.Clear();
-            foreach(InputInfoBase inputInfo in listInputInfo)
+            foreach (InputInfoBase inputInfo in listInputInfo)
             {
                 listBoxInputInfo.Items.Add(inputInfo.makeDisplayText());
             }
         }
+
     }
 }

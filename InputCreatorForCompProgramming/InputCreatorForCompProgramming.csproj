@@ -52,6 +52,12 @@
     <Compile Include="FormEditInteger.Designer.cs">
       <DependentUpon>FormEditInteger.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormEditList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormEditList.Designer.cs">
+      <DependentUpon>FormEditList.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormMain.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -60,11 +66,15 @@
     </Compile>
     <Compile Include="InputInfoBase.cs" />
     <Compile Include="InputInfoInteger.cs" />
+    <Compile Include="InputInfoList.cs" />
     <Compile Include="InputInfoUtil.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="FormEditInteger.resx">
       <DependentUpon>FormEditInteger.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormEditList.resx">
+      <DependentUpon>FormEditList.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormMain.resx">
       <DependentUpon>FormMain.cs</DependentUpon>

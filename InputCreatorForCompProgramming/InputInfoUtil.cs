@@ -67,6 +67,9 @@ namespace InputCreatorForCompProgramming
                 case InputType.Integer:
                     var inputInfoInteger = (InputInfoInteger)inputInfoBase;
                     return inputInfoInteger.createInputData(rnd, arg);
+                case InputType.List:
+                    var inputInfoList = (InputInfoList)inputInfoBase;
+                    return inputInfoList.createInputData(rnd, arg);
                 default:
                     throw new ArgumentException("InputTypeに無効な値が設定されました。");
             }
