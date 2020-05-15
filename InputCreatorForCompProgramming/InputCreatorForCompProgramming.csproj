@@ -66,6 +66,8 @@
     </Compile>
     <Compile Include="InputInfoBase.cs" />
     <Compile Include="InputInfoInteger.cs" />
+    <Compile Include="InputInfoIteratorEnd.cs" />
+    <Compile Include="InputInfoIteratorStart.cs" />
     <Compile Include="InputInfoList.cs" />
     <Compile Include="InputInfoUtil.cs" />
     <Compile Include="Program.cs" />
