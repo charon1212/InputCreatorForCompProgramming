@@ -51,11 +51,11 @@ namespace InputCreatorForCompProgramming
 
             // バリデーション
             string validateMessage = "";
-            if (!InputInfoUtil.validateIntegerMin(txtLoopMin.Text))
+            if (!InputInfoLogic.validateIntegerMin(txtLoopMin.Text))
             {
                 validateMessage += "ループ最小値に数値を入力してください。\r\n";
             }
-            if (!InputInfoUtil.validateIntegerMax(txtLoopMax.Text))
+            if (!InputInfoLogic.validateIntegerMax(txtLoopMax.Text))
             {
                 validateMessage += "ループ最大値に数値を入力してください。\r\n";
             }
@@ -80,8 +80,8 @@ namespace InputCreatorForCompProgramming
             int loopMin, loopMax;
             if (!int.TryParse(txtLoopMin.Text, out loopMin)) return;
             if (!int.TryParse(txtLoopMax.Text, out loopMax)) return;
-            string divisorInter = InputInfoUtil.getDivisor(rbDivisorInterNewLine.Checked, rbDivisorInterSpace.Checked, rbDivisorInterEmpty.Checked, rbDivisorInterCustom.Checked, txtDivisorInterCustom.Text);
-            string divisorLast = InputInfoUtil.getDivisor(rbDivisorLastNewLine.Checked, rbDivisorLastSpace.Checked, rbDivisorLastEmpty.Checked, rbDivisorLastCustom.Checked, txtDivisorLastCustom.Text);
+            string divisorInter = InputInfoLogic.getDivisor(rbDivisorInterNewLine.Checked, rbDivisorInterSpace.Checked, rbDivisorInterEmpty.Checked, rbDivisorInterCustom.Checked, txtDivisorInterCustom.Text);
+            string divisorLast = InputInfoLogic.getDivisor(rbDivisorLastNewLine.Checked, rbDivisorLastSpace.Checked, rbDivisorLastEmpty.Checked, rbDivisorLastCustom.Checked, txtDivisorLastCustom.Text);
 
             // FormEditIntegerの戻り値設定
             var inputInfoLoopStart = new InputInfoLoopStart(loopMin, loopMax, divisorInter, divisorLast);

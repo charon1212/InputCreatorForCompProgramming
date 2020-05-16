@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace InputCreatorForCompProgramming
 {
-    public static class InputInfoUtil
+    public static class InputInfoLogic
     {
         public const string DIVISOR_SPACE = " ";
         public const string DIVISOR_NEWLINE = "\r\n";

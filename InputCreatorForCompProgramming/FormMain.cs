@@ -93,7 +93,7 @@ namespace InputCreatorForCompProgramming
             var arg = new Dictionary<string, string>();
             foreach (InputInfoBase inputInfo in listInputInfo)
             {
-                txtOutput.Text += InputInfoUtil.createInputInfo(inputInfo, rnd, arg);
+                txtOutput.Text += InputInfoLogic.createInputInfo(inputInfo, rnd, arg);
             }
         }
 
