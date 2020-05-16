@@ -101,10 +101,20 @@ namespace InputCreatorForCompProgramming
         private void showListInputInfo()
         {
             listBoxInputInfo.Items.Clear();
+            int loopDepth = 0;
             foreach (InputInfoBase inputInfo in listInputInfo)
             {
-                listBoxInputInfo.Items.Add(inputInfo.makeDisplayText());
+                if (inputInfo.inputType == InputType.LoopEnd) loopDepth--;
+                listBoxInputInfo.Items.Add(makeIndent(loopDepth) + inputInfo.makeDisplayText());
+                if (inputInfo.inputType == InputType.LoopStart) loopDepth++;
             }
+        }
+
+        private string makeIndent(int loopDepth)
+        {
+            string indent = "";
+            for (int i = 0; i < loopDepth; i++) indent += "  ";
+            return indent;
         }
 
     }
