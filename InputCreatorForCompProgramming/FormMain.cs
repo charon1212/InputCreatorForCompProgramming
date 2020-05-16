@@ -15,6 +15,8 @@ namespace InputCreatorForCompProgramming
 
         // 入力データの情報
         List<InputInfoBase> listInputInfo;
+        // 入力データの情報のうち、現在のループ深さカウント
+        int loopCount = 0;
 
         public FormMain()
         {
@@ -50,8 +52,42 @@ namespace InputCreatorForCompProgramming
             showListInputInfo();
         }
 
+        private void btnLoopStart_Click(object sender, EventArgs e)
+        {
+            InputInfoBase inputInfo = null;
+            var formEditLoop = new FormEditLoop();
+
+            // フォームを開いて結果を受け取る
+            DialogResult dialogResult = formEditLoop.ShowDialog(this, out inputInfo);
+            if (dialogResult == DialogResult.OK && inputInfo != null)
+            {
+                listInputInfo.Add(inputInfo);
+                loopCount++;
+            }
+            showListInputInfo();
+        }
+
+        private void btnLoopLast_Click(object sender, EventArgs e)
+        {
+            if(loopCount <= 0)
+            {
+                MessageBox.Show("ループ開始を登録してください。");
+                return;
+            }
+            InputInfoBase inputInfo = new InputInfoLoopEnd();
+            listInputInfo.Add(inputInfo);
+            loopCount--;
+            showListInputInfo();
+        }
+
         private void btnCreateInputData_Click(object sender, EventArgs e)
         {
+            // ループの開始にループの終了が対応づくか調べる。
+            if(loopCount != 0)
+            {
+                MessageBox.Show("ループの開始・終了が一致しません。");
+                return;
+            }
             txtOutput.Text = "";
             var rnd = new Random();
             var arg = new Dictionary<string, string>();
@@ -64,6 +100,7 @@ namespace InputCreatorForCompProgramming
         private void FormMain_Load(object sender, EventArgs e)
         {
             listInputInfo = new List<InputInfoBase>();
+            loopCount = 0;
         }
 
         private void showListInputInfo()
