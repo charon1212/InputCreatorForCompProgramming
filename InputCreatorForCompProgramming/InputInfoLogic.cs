@@ -58,7 +58,7 @@ namespace InputCreatorForCompProgramming
             }
         }
 
-        public static string createInputInfo(InputInfoBase inputInfoBase, Random rnd, Dictionary<string,string> arg)
+        private static string createOneInputInfo(InputInfoBase inputInfoBase, Random rnd, Dictionary<string,string> arg)
         {
             switch (inputInfoBase.inputType)
             {
@@ -70,8 +70,83 @@ namespace InputCreatorForCompProgramming
                 case InputType.List:
                     var inputInfoList = (InputInfoList)inputInfoBase;
                     return inputInfoList.createInputData(rnd, arg);
+                case InputType.LoopStart:
+                case InputType.LoopEnd:
+                    return "";
                 default:
                     throw new ArgumentException("InputTypeに無効な値が設定されました。");
+            }
+        }
+
+        public static string createInputInfo(List<InputInfoBase> list, Random rnd)
+        {
+            var arg = new Dictionary<string, string>(); // のちの機能拡張(他の入力情報を制約に使う(#13))で使う予定
+            return createInputInfo(list, rnd, arg);
+        }
+
+        private static string createInputInfo(List<InputInfoBase> list, Random rnd, Dictionary<string, string> arg)
+        {
+            string inputInfoAllStr = "";
+            List<InputInfoBase> tempListInputInfo = null;
+            InputInfoLoopStart tempInputInfoLoopStart = null;
+            int loopDepth = 0;
+            foreach(InputInfoBase inputInfo in list)
+            {
+                if(loopDepth == 0)
+                {
+                    if(inputInfo.inputType == InputType.LoopStart)
+                    {
+                        loopDepth++;
+                        tempListInputInfo = new List<InputInfoBase>();
+                        tempInputInfoLoopStart = (InputInfoLoopStart)inputInfo;
+                    } else if(inputInfo.inputType == InputType.LoopEnd)
+                    {
+                        throw new ArgumentException("ループの開始が存在しないループの終了が登録されています。");
+                    } else
+                    {
+                        inputInfoAllStr += createOneInputInfo(inputInfo, rnd, arg);
+                    }
+                } else if (loopDepth > 0)
+                {
+                    loopDepth += getLoopDepthVariation(inputInfo.inputType);
+                    if(loopDepth == 0)
+                    {
+                        // tempListInputInfoに保存しているものをループ回数分吐き出す。
+                        int loopLength = tempInputInfoLoopStart.getLoopLength(rnd, arg);
+                        string divisorInter = tempInputInfoLoopStart.divisorInter;
+                        string divisorLast = tempInputInfoLoopStart.divisorLast;
+                        for(int i = 1; i <= loopLength; i++)
+                        {
+                            inputInfoAllStr += createInputInfo(tempListInputInfo, rnd, arg);
+                            inputInfoAllStr += (i == loopLength) ? divisorLast : divisorInter;
+                        }
+                    } else
+                    {
+                        tempListInputInfo.Add(inputInfo);
+                    }
+                } else
+                {
+                    //ロジック上、到達不能なコード
+                    throw new ArgumentException("ループの開始が存在しないループの終了が登録されています。");
+                }
+            }
+            if(loopDepth != 0)
+            {
+                throw new ArgumentException("ループの終了が登録されていないループがあります。");
+            }
+            return inputInfoAllStr;
+        }
+
+        private static int getLoopDepthVariation(InputType inputType)
+        {
+            switch (inputType)
+            {
+                case InputType.LoopStart:
+                    return 1;
+                case InputType.LoopEnd:
+                    return -1;
+                default:
+                    return 0;
             }
         }
 

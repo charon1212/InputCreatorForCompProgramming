@@ -25,7 +25,7 @@ namespace InputCreatorForCompProgramming
             string text = "ループ[" + loopMin.ToString() + "～" + loopMax.ToString() + "]";
             return text;
         }
-        public int getLoopCount(Random rnd, Dictionary<string, string> arg)
+        public int getLoopLength(Random rnd, Dictionary<string, string> arg)
         {
             double r = rnd.NextDouble();
             int result = loopMin + (int)Math.Floor(r * (loopMax - loopMin + 1));
