@@ -15,6 +15,8 @@ namespace InputCreatorForCompProgramming
 
         // 入力データの情報
         List<InputInfoBase> listInputInfo;
+        // 入力データの情報のうち、現在のループ深さカウント
+        int loopDepth = 0;
 
         public FormMain()
         {
@@ -50,29 +52,69 @@ namespace InputCreatorForCompProgramming
             showListInputInfo();
         }
 
+        private void btnLoopStart_Click(object sender, EventArgs e)
+        {
+            InputInfoBase inputInfo = null;
+            var formEditLoop = new FormEditLoop();
+
+            // フォームを開いて結果を受け取る
+            DialogResult dialogResult = formEditLoop.ShowDialog(this, out inputInfo);
+            if (dialogResult == DialogResult.OK && inputInfo != null)
+            {
+                listInputInfo.Add(inputInfo);
+                loopDepth++;
+            }
+            showListInputInfo();
+        }
+
+        private void btnLoopLast_Click(object sender, EventArgs e)
+        {
+            if(loopDepth <= 0)
+            {
+                MessageBox.Show("ループ開始を登録してください。");
+                return;
+            }
+            InputInfoBase inputInfo = new InputInfoLoopEnd();
+            listInputInfo.Add(inputInfo);
+            loopDepth--;
+            showListInputInfo();
+        }
+
         private void btnCreateInputData_Click(object sender, EventArgs e)
         {
-            txtOutput.Text = "";
-            var rnd = new Random();
-            var arg = new Dictionary<string, string>();
-            foreach (InputInfoBase inputInfo in listInputInfo)
+            // ループの開始にループの終了が対応づくか調べる。
+            if(loopDepth != 0)
             {
-                txtOutput.Text += InputInfoUtil.createInputInfo(inputInfo, rnd, arg);
+                MessageBox.Show("ループの開始・終了が一致しません。");
+                return;
             }
+            var rnd = new Random();
+            txtOutput.Text = InputInfoLogic.createInputInfo(listInputInfo, rnd);
         }
 
         private void FormMain_Load(object sender, EventArgs e)
         {
             listInputInfo = new List<InputInfoBase>();
+            loopDepth = 0;
         }
 
         private void showListInputInfo()
         {
             listBoxInputInfo.Items.Clear();
+            int loopDepth = 0;
             foreach (InputInfoBase inputInfo in listInputInfo)
             {
-                listBoxInputInfo.Items.Add(inputInfo.makeDisplayText());
+                if (inputInfo.inputType == InputType.LoopEnd) loopDepth--;
+                listBoxInputInfo.Items.Add(makeIndent(loopDepth) + inputInfo.makeDisplayText());
+                if (inputInfo.inputType == InputType.LoopStart) loopDepth++;
             }
+        }
+
+        private string makeIndent(int loopDepth)
+        {
+            string indent = "";
+            for (int i = 0; i < loopDepth; i++) indent += "  ";
+            return indent;
         }
 
     }

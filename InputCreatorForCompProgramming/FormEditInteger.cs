@@ -44,11 +44,11 @@ namespace InputCreatorForCompProgramming
         {
             // バリデーション
             string validateMessage = "";
-            if (!InputInfoUtil.validateIntegerMin(txtMin.Text))
+            if (!InputInfoLogic.validateIntegerMin(txtMin.Text))
             {
                 validateMessage += "最小値に数値を入力してください。\r\n";
             }
-            if (!InputInfoUtil.validateIntegerMax(txtMax.Text))
+            if (!InputInfoLogic.validateIntegerMax(txtMax.Text))
             {
                 validateMessage += "最大値に数値を入力してください。\r\n";
             }
@@ -67,7 +67,7 @@ namespace InputCreatorForCompProgramming
             long min, max;
             if(!long.TryParse(txtMin.Text, out min)) return;
             if(!long.TryParse(txtMax.Text, out max)) return;
-            string divisor = InputInfoUtil.getDivisor(rbDivisorNewLine.Checked, rbDivisorSpace.Checked, rbDivisorEmpty.Checked, rbDivisorCustom.Checked, txtDivisorCustom.Text);
+            string divisor = InputInfoLogic.getDivisor(rbDivisorNewLine.Checked, rbDivisorSpace.Checked, rbDivisorEmpty.Checked, rbDivisorCustom.Checked, txtDivisorCustom.Text);
 
             // FormEditIntegerの戻り値設定
             var inputinfoInteger = new InputInfoInteger(min, max, divisor);

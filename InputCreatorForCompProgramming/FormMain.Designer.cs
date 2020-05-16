@@ -35,9 +35,11 @@
             this.btnDeleteInputInfo = new System.Windows.Forms.Button();
             this.btnEditInputInfo = new System.Windows.Forms.Button();
             this.groupAddButton = new System.Windows.Forms.GroupBox();
+            this.btnLoopStart = new System.Windows.Forms.Button();
+            this.btnLoopLast = new System.Windows.Forms.Button();
+            this.btnList = new System.Windows.Forms.Button();
             this.btnInteger = new System.Windows.Forms.Button();
             this.txtOutput = new System.Windows.Forms.TextBox();
-            this.btnList = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -119,6 +121,8 @@
             // 
             // groupAddButton
             // 
+            this.groupAddButton.Controls.Add(this.btnLoopStart);
+            this.groupAddButton.Controls.Add(this.btnLoopLast);
             this.groupAddButton.Controls.Add(this.btnList);
             this.groupAddButton.Controls.Add(this.btnInteger);
             this.groupAddButton.Location = new System.Drawing.Point(5, 3);
@@ -127,6 +131,36 @@
             this.groupAddButton.TabIndex = 1;
             this.groupAddButton.TabStop = false;
             this.groupAddButton.Text = "入力情報を追加";
+            // 
+            // btnLoopStart
+            // 
+            this.btnLoopStart.Location = new System.Drawing.Point(6, 76);
+            this.btnLoopStart.Name = "btnLoopStart";
+            this.btnLoopStart.Size = new System.Drawing.Size(75, 23);
+            this.btnLoopStart.TabIndex = 4;
+            this.btnLoopStart.Text = "ループ開始";
+            this.btnLoopStart.UseVisualStyleBackColor = true;
+            this.btnLoopStart.Click += new System.EventHandler(this.btnLoopStart_Click);
+            // 
+            // btnLoopLast
+            // 
+            this.btnLoopLast.Location = new System.Drawing.Point(87, 76);
+            this.btnLoopLast.Name = "btnLoopLast";
+            this.btnLoopLast.Size = new System.Drawing.Size(75, 23);
+            this.btnLoopLast.TabIndex = 4;
+            this.btnLoopLast.Text = "ループ終了";
+            this.btnLoopLast.UseVisualStyleBackColor = true;
+            this.btnLoopLast.Click += new System.EventHandler(this.btnLoopLast_Click);
+            // 
+            // btnList
+            // 
+            this.btnList.Location = new System.Drawing.Point(87, 18);
+            this.btnList.Name = "btnList";
+            this.btnList.Size = new System.Drawing.Size(75, 23);
+            this.btnList.TabIndex = 4;
+            this.btnList.Text = "リスト";
+            this.btnList.UseVisualStyleBackColor = true;
+            this.btnList.Click += new System.EventHandler(this.btnList_Click);
             // 
             // btnInteger
             // 
@@ -146,16 +180,6 @@
             this.txtOutput.Name = "txtOutput";
             this.txtOutput.Size = new System.Drawing.Size(328, 446);
             this.txtOutput.TabIndex = 0;
-            // 
-            // btnList
-            // 
-            this.btnList.Location = new System.Drawing.Point(87, 18);
-            this.btnList.Name = "btnList";
-            this.btnList.Size = new System.Drawing.Size(75, 23);
-            this.btnList.TabIndex = 4;
-            this.btnList.Text = "リスト";
-            this.btnList.UseVisualStyleBackColor = true;
-            this.btnList.Click += new System.EventHandler(this.btnList_Click);
             // 
             // FormMain
             // 
@@ -189,6 +213,8 @@
         private System.Windows.Forms.Button btnInteger;
         private System.Windows.Forms.ListBox listBoxInputInfo;
         private System.Windows.Forms.Button btnList;
+        private System.Windows.Forms.Button btnLoopStart;
+        private System.Windows.Forms.Button btnLoopLast;
     }
 }
 

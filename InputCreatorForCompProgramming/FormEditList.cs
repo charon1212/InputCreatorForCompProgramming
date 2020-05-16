@@ -91,7 +91,7 @@ namespace InputCreatorForCompProgramming
             }
 
             // 変換
-            string divisor = InputInfoUtil.getDivisor(rbDivisorNewLine.Checked, rbDivisorSpace.Checked, rbDivisorEmpty.Checked, rbDivisorCustom.Checked, txtDivisorCustom.Text);
+            string divisor = InputInfoLogic.getDivisor(rbDivisorNewLine.Checked, rbDivisorSpace.Checked, rbDivisorEmpty.Checked, rbDivisorCustom.Checked, txtDivisorCustom.Text);
 
             // FormEditIntegerの戻り値設定
             var inputInfoList = new InputInfoList(list, divisor);
