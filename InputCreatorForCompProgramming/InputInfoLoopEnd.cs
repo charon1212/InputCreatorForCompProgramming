@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace InputCreatorForCompProgramming
 {
-    public class InputInfoIteratorEnd : InputInfoBase
+    public class InputInfoLoopEnd : InputInfoBase
     {
-        public InputInfoIteratorEnd() : base(InputType.IteratorEnd)
+        public InputInfoLoopEnd() : base(InputType.LoopEnd)
         {
         }
         public override string makeDisplayText()

@@ -6,14 +6,14 @@ using System.Threading.Tasks;
 
 namespace InputCreatorForCompProgramming
 {
-    public class InputInfoIteratorStart : InputInfoBase
+    public class InputInfoLoopStart : InputInfoBase
     {
         int loopMin;
         int loopMax;
         public string divisorInter { get; }
         public string divisorLast { get; }
 
-        public InputInfoIteratorStart(int loopMin, int loopMax, string divisorInter, string divisorLast) : base(InputType.IteratorStart)
+        public InputInfoLoopStart(int loopMin, int loopMax, string divisorInter, string divisorLast) : base(InputType.LoopStart)
         {
             this.loopMin = loopMin;
             this.loopMax = loopMax;

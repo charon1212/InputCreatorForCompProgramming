@@ -27,7 +27,7 @@ namespace InputCreatorForCompProgramming
         None,
         Integer,
         List,
-        IteratorStart,
-        IteratorEnd,
+        LoopStart,
+        LoopEnd,
     }
 }
