@@ -27,6 +27,10 @@ namespace MathExpressionAnalysis.Object.Lex
             {
                 throw new ArgumentException("関数の引数は整数、小数、小数リストのいずれかである必要があります。");
             }
+            if (!functionMap.ContainsKey(this.functionName))
+            {
+                throw new ArgumentException("関数" + this.functionName + "が見つかりません。");
+            }
             Function function = functionMap[this.functionName];
             return function.eval(arguments);
         }
@@ -34,6 +38,7 @@ namespace MathExpressionAnalysis.Object.Lex
         {
             if (operand == DataType.Integer || operand == DataType.Decimal || operand == DataType.DecimalList)
             {
+                if (!functionReturnValue.ContainsKey(this.functionName)) return DataType.None;
                 return functionReturnValue[this.functionName];
             }
             else

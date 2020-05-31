@@ -8,12 +8,17 @@ namespace MathExpressionAnalysis.Object.Lex
     {
         public override MathTreeNodeValue eval(Dictionary<string, Variable> variableMap)
         {
+            if (!variableMap.ContainsKey(this.value))
+            {
+                throw new ArgumentException("変数" + this.value + "が見つかりません。");
+            }
             Variable variable = variableMap[this.value];
             return variable.getValue();
         }
 
         public override DataType getDataType(Dictionary<string, DataType> variableDataTypeMap)
         {
+            if (!variableDataTypeMap.ContainsKey(this.value)) return DataType.None;
             DataType variableDataType = variableDataTypeMap[this.value];
             return variableDataType;
         }
