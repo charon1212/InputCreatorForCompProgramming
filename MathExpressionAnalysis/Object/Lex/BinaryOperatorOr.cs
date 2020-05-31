@@ -17,7 +17,6 @@ namespace MathExpressionAnalysis.Object.Lex
 
         public override DataType getDataType(DataType leftOperand, DataType rightOperand)
         {
-            if (leftOperand == DataType.Integer && rightOperand == DataType.Integer) return DataType.Boolean;
             if (leftOperand == DataType.Boolean && rightOperand == DataType.Boolean) return DataType.Boolean;
             return DataType.None;
         }
