@@ -49,9 +49,5 @@ namespace MathExpressionAnalysis.Object.Lex
         {
             return 9;
         }
-        public UnaryOperatorFunction(string functionName) : base()
-        {
-            this.functionName = functionName;
-        }
     }
 }
