@@ -19,7 +19,7 @@ namespace MathExpressionAnalysis.Object.Lex
                     return new MathTreeNodeValue(leftOperand.valueInteger - rightOperand.valueDecimal);
                 }
             }
-            else if (rightOperand.type == DataType.Decimal)
+            else if (leftOperand.type == DataType.Decimal)
             {
                 if (rightOperand.type == DataType.Integer)
                 {
