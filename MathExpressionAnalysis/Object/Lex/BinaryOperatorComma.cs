@@ -15,11 +15,11 @@ namespace MathExpressionAnalysis.Object.Lex
             }
             else if (leftOperand.type == DataType.Decimal)
             {
-                list.Add(rightOperand.valueDecimal);
+                list.Add(leftOperand.valueDecimal);
             }
             else if (leftOperand.type == DataType.DecimalList)
             {
-                list.AddRange(rightOperand.valueDecimalList);
+                list.AddRange(leftOperand.valueDecimalList);
             }
             else
             {
