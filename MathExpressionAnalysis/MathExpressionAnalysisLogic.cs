@@ -385,6 +385,10 @@ namespace MathExpressionAnalysis
             if (lexicalList.Count == 1)
             {
                 Lexical lex = lexicalList[0];
+                if(!(lex is Literal))
+                {
+                    throw new ArgumentException("最終評価が演算子となる品詞が存在します。");
+                }
                 node.lex = lex;
                 return node;
             }
