@@ -334,7 +334,7 @@ namespace MathExpressionAnalysis
                 {
                     parenthesisDepth++;
                 }
-                else if (terminalSymbol.type == TerminalSymbolType.LeftP)
+                else if (terminalSymbol.type == TerminalSymbolType.RightP)
                 {
                     parenthesisDepth--;
                     if (parenthesisDepth < 0)
