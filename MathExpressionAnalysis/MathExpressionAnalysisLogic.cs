@@ -406,7 +406,7 @@ namespace MathExpressionAnalysis
                     leftLexicalList.Add(lexicalList[i]);
                 }
                 var rightLexicalList = new List<Lexical>();
-                for (int i = 0; i < operatorIndex; i++)
+                for (int i = operatorIndex+1; i < lexicalList.Count; i++)
                 {
                     rightLexicalList.Add(lexicalList[i]);
                 }
