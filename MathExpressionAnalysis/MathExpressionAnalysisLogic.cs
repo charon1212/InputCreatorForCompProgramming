@@ -374,7 +374,7 @@ namespace MathExpressionAnalysis
         /// <param name="lexicalList">品詞のリスト。</param>
         /// <param name="master">数式ツリーのマスター。</param>
         /// <returns>数式ツリーのノード。</returns>
-        public static MathTreeNode makeMathTreeNode(List<Lexical> lexicalList, ref MathTree master)
+        private static MathTreeNode makeMathTreeNode(List<Lexical> lexicalList, ref MathTree master)
         {
             if (lexicalList.Count == 0)
             {
@@ -482,9 +482,11 @@ namespace MathExpressionAnalysis
         /// <param name="functionDataTypeMap">関数の戻り値のデータ型の連想配列。</param>
         /// <returns>この数式ツリーが返す評価値のデータ型を返却します。
         /// 文法エラーの場合、Noneが返却されます。</returns>
-        public static DataType checkDataType(MathTree tree, Dictionary<string, DataType> variableDataTypeMap,
-            Dictionary<string, DataType> functionDataTypeMap)
+        public static DataType checkDataType(MathTree tree, Dictionary<string, DataType> variableDataTypeMap = null,
+            Dictionary<string, DataType> functionDataTypeMap = null)
         {
+            if (variableDataTypeMap == null) variableDataTypeMap = new Dictionary<string, DataType>();
+            if (functionDataTypeMap == null) functionDataTypeMap = new Dictionary<string, DataType>();
             return checkNodeDataType(tree.root, variableDataTypeMap, functionDataTypeMap);
         }
         /// <summary>
@@ -511,7 +513,7 @@ namespace MathExpressionAnalysis
         /// <param name="functionDataTypeMap">関数の戻り値のデータ型の連想配列。</param>
         /// <returns>この数式ツリーのノードが返す評価値のデータ型を返却します。
         /// 文法エラーの場合、Noneが返却されます。</returns>
-        public static DataType checkNodeDataType(MathTreeNode node, Dictionary<string, DataType> variableDataTypeMap,
+        private static DataType checkNodeDataType(MathTreeNode node, Dictionary<string, DataType> variableDataTypeMap,
             Dictionary<string, DataType> functionDataTypeMap)
         {
             if (node.lex is Literal literal)
@@ -537,8 +539,10 @@ namespace MathExpressionAnalysis
         #endregion
 
         #region "5.評価"
-        public static MathTreeNodeValue eval(MathTree tree, Dictionary<string, Variable> variableMap, Dictionary<string, Function> functionMap)
+        public static MathTreeNodeValue eval(MathTree tree, Dictionary<string, Variable> variableMap = null, Dictionary<string, Function> functionMap = null)
         {
+            if (variableMap == null) variableMap = new Dictionary<string, Variable>();
+            if (functionMap == null) functionMap = new Dictionary<string, Function>();
             return evalNode(tree.root, variableMap, functionMap);
         }
         private static MathTreeNodeValue evalNode(MathTreeNode node, Dictionary<string, Variable> variableMap, Dictionary<string, Function> functionMap)
