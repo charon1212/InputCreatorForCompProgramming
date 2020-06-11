@@ -14,7 +14,7 @@ namespace InputCreatorForCompProgramming
         private long max;
         private string divisor;
 
-        public InputInfoInteger(long min, long max, string divisor) : base(InputType.Integer)
+        public InputInfoInteger(long min, long max, string divisor)
         {
             this.min = min;
             this.max = max;
@@ -27,13 +27,13 @@ namespace InputCreatorForCompProgramming
             return text;
         }
 
-        public string createInputData(Random rnd, Dictionary<string, string> arg)
+        public override string createInputData(Random rnd, ref Dictionary<string, string> arg)
         {
-            long inputData = makeInputData(rnd, arg);
+            long inputData = makeInputData(rnd, ref arg);
             return inputData.ToString() + divisor;
         }
 
-        private long makeInputData(Random rnd, Dictionary<string, string> arg)
+        private long makeInputData(Random rnd, ref Dictionary<string, string> arg)
         {
             double r = rnd.NextDouble();
             long result = min + (long)Math.Floor(r * (max - min + 1));

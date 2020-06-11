@@ -13,7 +13,7 @@ namespace InputCreatorForCompProgramming
         public string divisorInter { get; }
         public string divisorLast { get; }
 
-        public InputInfoLoopStart(int loopMin, int loopMax, string divisorInter, string divisorLast) : base(InputType.LoopStart)
+        public InputInfoLoopStart(int loopMin, int loopMax, string divisorInter, string divisorLast)
         {
             this.loopMin = loopMin;
             this.loopMax = loopMax;
@@ -25,11 +25,16 @@ namespace InputCreatorForCompProgramming
             string text = "ループ[" + loopMin.ToString() + "～" + loopMax.ToString() + "]";
             return text;
         }
-        public int getLoopLength(Random rnd, Dictionary<string, string> arg)
+        public int getLoopLength(Random rnd, ref Dictionary<string, string> arg)
         {
             double r = rnd.NextDouble();
             int result = loopMin + (int)Math.Floor(r * (loopMax - loopMin + 1));
             return result;
+        }
+
+        public override string createInputData(Random rnd, ref Dictionary<string, string> arg)
+        {
+            return "";
         }
     }
 }

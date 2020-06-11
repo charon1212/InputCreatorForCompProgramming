@@ -45,7 +45,7 @@ namespace InputCreatorForCompProgramming
 
             // フォームを開いて結果を受け取る
             DialogResult dialogResult = formEditList.ShowDialog(this, out inputInfo);
-            if(dialogResult == DialogResult.OK && inputInfo != null)
+            if (dialogResult == DialogResult.OK && inputInfo != null)
             {
                 listInputInfo.Add(inputInfo);
             }
@@ -69,7 +69,7 @@ namespace InputCreatorForCompProgramming
 
         private void btnLoopLast_Click(object sender, EventArgs e)
         {
-            if(loopDepth <= 0)
+            if (loopDepth <= 0)
             {
                 MessageBox.Show("ループ開始を登録してください。");
                 return;
@@ -83,7 +83,7 @@ namespace InputCreatorForCompProgramming
         private void btnCreateInputData_Click(object sender, EventArgs e)
         {
             // ループの開始にループの終了が対応づくか調べる。
-            if(loopDepth != 0)
+            if (loopDepth != 0)
             {
                 MessageBox.Show("ループの開始・終了が一致しません。");
                 return;
@@ -104,9 +104,9 @@ namespace InputCreatorForCompProgramming
             int loopDepth = 0;
             foreach (InputInfoBase inputInfo in listInputInfo)
             {
-                if (inputInfo.inputType == InputType.LoopEnd) loopDepth--;
+                if (inputInfo is InputInfoLoopEnd) loopDepth--;
                 listBoxInputInfo.Items.Add(makeIndent(loopDepth) + inputInfo.makeDisplayText());
-                if (inputInfo.inputType == InputType.LoopStart) loopDepth++;
+                if (inputInfo is InputInfoLoopStart) loopDepth++;
             }
         }
 

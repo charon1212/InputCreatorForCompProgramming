@@ -9,25 +9,22 @@ namespace InputCreatorForCompProgramming
     abstract public class InputInfoBase
     {
         public string name { get; set; }
-        public InputType inputType { get; }
-        public InputInfoBase(InputType inputType)
+        public InputInfoBase()
         {
             name = "";
-            this.inputType = inputType;
         }
 
         /// <summary>
         /// InputInfoの設定をユーザーに伝える文字列を作成します。
         /// </summary>
         abstract public string makeDisplayText();
-    }
+        /// <summary>
+        /// 入力データを作成して文字列で出力する。
+        /// </summary>
+        /// <param name="rnd">乱数生成器を指定する。</param>
+        /// <param name="arg">引数のリストを指定する。</param>
+        /// <returns>入力データの文字列表現。分割文字列も含む。</returns>
+        abstract public string createInputData(Random rnd, ref Dictionary<string, string> arg);
 
-    public enum InputType
-    {
-        None,
-        Integer,
-        List,
-        LoopStart,
-        LoopEnd,
     }
 }

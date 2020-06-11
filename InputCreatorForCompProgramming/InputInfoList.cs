@@ -11,7 +11,7 @@ namespace InputCreatorForCompProgramming
         private List<string> list;
         private string divisor;
 
-        public InputInfoList(List<string> list, string divisor) : base(InputType.List)
+        public InputInfoList(List<string> list, string divisor)
         {
             if (list.Count == 0) throw new ArgumentException("リストが空です。");
             this.list = list;
@@ -29,13 +29,13 @@ namespace InputCreatorForCompProgramming
             return text;
         }
 
-        public string createInputData(Random rnd, Dictionary<string, string> arg)
+        public override string createInputData(Random rnd, ref Dictionary<string, string> arg)
         {
-            string inputData = makeInputData(rnd, arg);
+            string inputData = makeInputData(rnd, ref arg);
             return inputData + divisor;
         }
 
-        private string makeInputData(Random rnd, Dictionary<string, string> arg)
+        private string makeInputData(Random rnd, ref Dictionary<string, string> arg)
         {
             double r = rnd.NextDouble();
             int count = list.Count;
