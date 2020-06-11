@@ -88,9 +88,9 @@ namespace InputCreatorForCompProgramming
                     for (int i = 1; i <= loopLength; i++)
                     {
                         inputInfoAllStr += createInputInfo(inLoopInputInfoList[cntInLoopInputInfoList], rnd, ref arg);
-                        cntInLoopInputInfoList++;
                         inputInfoAllStr += (i == loopLength) ? divisorLast : divisorInter;
                     }
+                    cntInLoopInputInfoList++;
                 }
             }
 
