@@ -385,7 +385,7 @@ namespace MathExpressionAnalysis
             if (lexicalList.Count == 1)
             {
                 Lexical lex = lexicalList[0];
-                if(!(lex is Literal))
+                if (!(lex is Literal))
                 {
                     throw new ArgumentException("最終評価が演算子となる品詞が存在します。");
                 }
@@ -406,7 +406,7 @@ namespace MathExpressionAnalysis
                     leftLexicalList.Add(lexicalList[i]);
                 }
                 var rightLexicalList = new List<Lexical>();
-                for (int i = operatorIndex+1; i < lexicalList.Count; i++)
+                for (int i = operatorIndex + 1; i < lexicalList.Count; i++)
                 {
                     rightLexicalList.Add(lexicalList[i]);
                 }
@@ -568,6 +568,23 @@ namespace MathExpressionAnalysis
             }
         }
         #endregion
+
+        /// <summary>
+        /// 文字列から数式ツリーを作成する。
+        /// </summary>
+        /// <param name="expr"></param>
+        /// <returns></returns>
+        public static MathTree getMathTreeFromString(String expr)
+        {
+            // 終端記号のリストに変換する。
+            List<TerminalSymbol> terminalSymbolList = convertTerminalSymbolList(expr);
+            // 品詞のリストに変換する。
+            // ()はここで取り除かれ、operatorの優先度として割り当てる。
+            List<Lexical> lexicalList = convertLexicalList(terminalSymbolList);
+            // 数式構造を割り当てる。
+            MathTree tree = makeMathTree(lexicalList);
+            return tree;
+        }
 
     }
 }
