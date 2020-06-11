@@ -112,5 +112,11 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\MathExpressionAnalysis\MathExpressionAnalysis.csproj">
+      <Project>{bc9d4a44-0584-41d8-a65a-2552a0d0cca2}</Project>
+      <Name>MathExpressionAnalysis</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

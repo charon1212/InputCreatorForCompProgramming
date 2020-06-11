@@ -4,17 +4,18 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using InputCreatorForCompProgramming;
+using MathExpressionAnalysis.Object;
 
 namespace InputCreatorForCompProgramming
 {
     public class InputInfoInteger : InputInfoBase
     {
 
-        private long min;
-        private long max;
+        private MathTree min;
+        private MathTree max;
         private string divisor;
 
-        public InputInfoInteger(long min, long max, string divisor)
+        public InputInfoInteger(MathTree min, MathTree max, string divisor)
         {
             this.min = min;
             this.max = max;
@@ -35,8 +36,11 @@ namespace InputCreatorForCompProgramming
 
         private long makeInputData(Random rnd, ref Dictionary<string, string> arg)
         {
+            long evalMin = min.eval().valueInteger;
+            long evalMax = max.eval().valueInteger;
+
             double r = rnd.NextDouble();
-            long result = min + (long)Math.Floor(r * (max - min + 1));
+            long result = evalMin + (long)Math.Floor(r * (evalMax - evalMin + 1));
             return result;
         }
 

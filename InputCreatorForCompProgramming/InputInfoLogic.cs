@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MathExpressionAnalysis.Object;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Sockets;
@@ -12,19 +13,9 @@ namespace InputCreatorForCompProgramming
         public const string DIVISOR_SPACE = " ";
         public const string DIVISOR_NEWLINE = "\r\n";
         public const string DIVISOR_EMPTY = "";
-        public static bool validateIntegerMin(string s)
+        public static bool validateMathTreeDataType(MathTree tree, DataType dataType)
         {
-            return canParseInt64(s);
-        }
-        public static bool validateIntegerMax(string s)
-        {
-            return canParseInt64(s);
-        }
-        private static bool canParseInt64(string s)
-        {
-            Int64 value;
-            bool parseResult = Int64.TryParse(s, out value);
-            return parseResult;
+            return tree.checkDataType() == dataType;
         }
 
         /// <summary>
@@ -82,10 +73,10 @@ namespace InputCreatorForCompProgramming
                 if (inputInfo is InputInfoLoopStart inputInfoLoopStart)
                 {
                     // tempListInputInfoに保存しているものをループ回数分吐き出す。
-                    int loopLength = inputInfoLoopStart.getLoopLength(rnd, ref arg);
+                    long loopLength = inputInfoLoopStart.getLoopLength(rnd, ref arg);
                     string divisorInter = inputInfoLoopStart.divisorInter;
                     string divisorLast = inputInfoLoopStart.divisorLast;
-                    for (int i = 1; i <= loopLength; i++)
+                    for (long i = 1; i <= loopLength; i++)
                     {
                         inputInfoAllStr += createInputInfo(inLoopInputInfoList[cntInLoopInputInfoList], rnd, ref arg);
                         inputInfoAllStr += (i == loopLength) ? divisorLast : divisorInter;

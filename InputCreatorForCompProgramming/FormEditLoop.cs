@@ -1,4 +1,6 @@
-﻿using System;
+﻿using MathExpressionAnalysis;
+using MathExpressionAnalysis.Object;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -51,14 +53,35 @@ namespace InputCreatorForCompProgramming
 
             // バリデーション
             string validateMessage = "";
-            if (!InputInfoLogic.validateIntegerMin(txtLoopMin.Text))
+
+            // 数式をツリーに変換。
+            MathTree treeLoopMin = new MathTree();
+            MathTree treeLoopMax = new MathTree();
+            try
             {
-                validateMessage += "ループ最小値に数値を入力してください。\r\n";
+                treeLoopMin = MathExpressionAnalysisLogic.getMathTreeFromString(txtLoopMin.Text);
+                if (!InputInfoLogic.validateMathTreeDataType(treeLoopMin, DataType.Integer))
+                {
+                    validateMessage += "最小値の評価結果が整数になりません。\r\n";
+                }
             }
-            if (!InputInfoLogic.validateIntegerMax(txtLoopMax.Text))
+            catch (ArgumentException argEx)
             {
-                validateMessage += "ループ最大値に数値を入力してください。\r\n";
+                validateMessage += "最小値を数式に変換できませんでした。\r\n" + "エラーメッセージ：" + argEx.Message + "\r\n";
             }
+            try
+            {
+                treeLoopMax = MathExpressionAnalysisLogic.getMathTreeFromString(txtLoopMax.Text);
+                if (!InputInfoLogic.validateMathTreeDataType(treeLoopMax, DataType.Integer))
+                {
+                    validateMessage += "最大値の評価結果が整数になりません。\r\n";
+                }
+            }
+            catch (ArgumentException argEx)
+            {
+                validateMessage += "最小値を数式に変換できませんでした。\r\n" + "エラーメッセージ：" + argEx.Message + "\r\n";
+            }
+
             if (!rbDivisorInterNewLine.Checked && !rbDivisorInterSpace.Checked &&
                     !rbDivisorInterEmpty.Checked && !rbDivisorInterCustom.Checked)
             {
@@ -77,14 +100,11 @@ namespace InputCreatorForCompProgramming
             }
 
             // 変換
-            int loopMin, loopMax;
-            if (!int.TryParse(txtLoopMin.Text, out loopMin)) return;
-            if (!int.TryParse(txtLoopMax.Text, out loopMax)) return;
             string divisorInter = InputInfoLogic.getDivisor(rbDivisorInterNewLine.Checked, rbDivisorInterSpace.Checked, rbDivisorInterEmpty.Checked, rbDivisorInterCustom.Checked, txtDivisorInterCustom.Text);
             string divisorLast = InputInfoLogic.getDivisor(rbDivisorLastNewLine.Checked, rbDivisorLastSpace.Checked, rbDivisorLastEmpty.Checked, rbDivisorLastCustom.Checked, txtDivisorLastCustom.Text);
 
             // FormEditIntegerの戻り値設定
-            var inputInfoLoopStart = new InputInfoLoopStart(loopMin, loopMax, divisorInter, divisorLast);
+            var inputInfoLoopStart = new InputInfoLoopStart(treeLoopMin, treeLoopMax, divisorInter, divisorLast);
             this.inputInfoLoopStart = inputInfoLoopStart;
 
             // DialogResultの設定
