@@ -17,7 +17,7 @@ namespace MathExpressionAnalysis
         /// <returns>終端記号のリスト。</returns>
         public static List<TerminalSymbol> convertTerminalSymbolList(string expr)
         {
-            if (expr == "") return null;
+            if (expr == "") return new List<TerminalSymbol>();
             List<string> terminalSymbolListStr = divideTerminalSymbol(expr);
             List<TerminalSymbol> terminalSymbolList = assignTerminalSymbolList(terminalSymbolListStr);
             return terminalSymbolList;
@@ -364,6 +364,7 @@ namespace MathExpressionAnalysis
         /// <returns>数式ツリー。</returns>
         public static MathTree makeMathTree(List<Lexical> lexicalList)
         {
+            if (lexicalList.Count == 0) throw new ArgumentException("品詞のリストが空です。");
             var tree = new MathTree();
             tree.root = makeMathTreeNode(lexicalList, ref tree);
             return tree;
