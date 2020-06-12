@@ -29,7 +29,7 @@ namespace InputCreatorForCompProgramming
         {
             if (str.Length == 0) return false;
             if (!checkIsLetterChar(str[0])) return false;
-            for (int i = 1; i < str.Length; i++) if (!checkIsLetterChar(str[i]) || !Char.IsDigit(str[i])) return false;
+            for (int i = 1; i < str.Length; i++) if (!checkIsLetterChar(str[i]) && !Char.IsDigit(str[i])) return false;
             return true;
         }
         private static bool checkIsLetterChar(Char c)
