@@ -57,7 +57,7 @@
             this.groupDivisor.Location = new System.Drawing.Point(12, 201);
             this.groupDivisor.Name = "groupDivisor";
             this.groupDivisor.Size = new System.Drawing.Size(172, 113);
-            this.groupDivisor.TabIndex = 5;
+            this.groupDivisor.TabIndex = 6;
             this.groupDivisor.TabStop = false;
             this.groupDivisor.Text = "区切り文字";
             // 
@@ -71,6 +71,7 @@
             this.txtDivisorCustom.Name = "txtDivisorCustom";
             this.txtDivisorCustom.Size = new System.Drawing.Size(156, 19);
             this.txtDivisorCustom.TabIndex = 4;
+            this.txtDivisorCustom.Enter += new System.EventHandler(this.textBox_Enter);
             // 
             // rbDivisorSpace
             // 
@@ -124,7 +125,7 @@
             this.btnEnter.Location = new System.Drawing.Point(109, 320);
             this.btnEnter.Name = "btnEnter";
             this.btnEnter.Size = new System.Drawing.Size(75, 23);
-            this.btnEnter.TabIndex = 6;
+            this.btnEnter.TabIndex = 7;
             this.btnEnter.Text = "追加";
             this.btnEnter.UseVisualStyleBackColor = true;
             this.btnEnter.Click += new System.EventHandler(this.btnEnter_Click);
@@ -140,7 +141,7 @@
             this.listBoxMain.Name = "listBoxMain";
             this.listBoxMain.ScrollAlwaysVisible = true;
             this.listBoxMain.Size = new System.Drawing.Size(172, 100);
-            this.listBoxMain.TabIndex = 7;
+            this.listBoxMain.TabIndex = 2;
             // 
             // btnItemAdd
             // 
@@ -148,7 +149,7 @@
             this.btnItemAdd.Location = new System.Drawing.Point(12, 172);
             this.btnItemAdd.Name = "btnItemAdd";
             this.btnItemAdd.Size = new System.Drawing.Size(75, 23);
-            this.btnItemAdd.TabIndex = 8;
+            this.btnItemAdd.TabIndex = 4;
             this.btnItemAdd.Text = "項目追加";
             this.btnItemAdd.UseVisualStyleBackColor = true;
             this.btnItemAdd.Click += new System.EventHandler(this.btnItemAdd_Click);
@@ -160,7 +161,8 @@
             this.txtItem.Location = new System.Drawing.Point(12, 147);
             this.txtItem.Name = "txtItem";
             this.txtItem.Size = new System.Drawing.Size(172, 19);
-            this.txtItem.TabIndex = 9;
+            this.txtItem.TabIndex = 3;
+            this.txtItem.Enter += new System.EventHandler(this.textBox_Enter);
             // 
             // btnItemDelete
             // 
@@ -168,7 +170,7 @@
             this.btnItemDelete.Location = new System.Drawing.Point(109, 172);
             this.btnItemDelete.Name = "btnItemDelete";
             this.btnItemDelete.Size = new System.Drawing.Size(75, 23);
-            this.btnItemDelete.TabIndex = 10;
+            this.btnItemDelete.TabIndex = 5;
             this.btnItemDelete.Text = "項目削除";
             this.btnItemDelete.UseVisualStyleBackColor = true;
             this.btnItemDelete.Click += new System.EventHandler(this.btnItemDelete_Click);
@@ -180,7 +182,9 @@
             this.txtName.Location = new System.Drawing.Point(84, 12);
             this.txtName.Name = "txtName";
             this.txtName.Size = new System.Drawing.Size(100, 19);
-            this.txtName.TabIndex = 12;
+            this.txtName.TabIndex = 1;
+            this.txtName.Text = "var";
+            this.txtName.Enter += new System.EventHandler(this.textBox_Enter);
             // 
             // labelName
             // 
@@ -189,7 +193,7 @@
             this.labelName.Location = new System.Drawing.Point(12, 12);
             this.labelName.Name = "labelName";
             this.labelName.Size = new System.Drawing.Size(47, 19);
-            this.labelName.TabIndex = 11;
+            this.labelName.TabIndex = 0;
             this.labelName.Text = "名前";
             // 
             // FormEditList

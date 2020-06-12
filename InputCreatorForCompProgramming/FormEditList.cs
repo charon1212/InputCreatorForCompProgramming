@@ -112,6 +112,11 @@ namespace InputCreatorForCompProgramming
 
         }
 
+        private void textBox_Enter(object sender, EventArgs e)
+        {
+            if (sender is TextBox textBox) textBox.SelectAll();
+        }
+
         private void FormEditList_Load(object sender, EventArgs e)
         {
 

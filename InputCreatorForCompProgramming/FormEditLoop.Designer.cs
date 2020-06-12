@@ -64,7 +64,7 @@
             this.groupDivisorInter.Location = new System.Drawing.Point(16, 134);
             this.groupDivisorInter.Name = "groupDivisorInter";
             this.groupDivisorInter.Size = new System.Drawing.Size(172, 113);
-            this.groupDivisorInter.TabIndex = 5;
+            this.groupDivisorInter.TabIndex = 6;
             this.groupDivisorInter.TabStop = false;
             this.groupDivisorInter.Text = "区切り文字(中間)";
             // 
@@ -78,6 +78,7 @@
             this.txtDivisorInterCustom.Name = "txtDivisorInterCustom";
             this.txtDivisorInterCustom.Size = new System.Drawing.Size(156, 19);
             this.txtDivisorInterCustom.TabIndex = 4;
+            this.txtDivisorInterCustom.Enter += new System.EventHandler(this.textBox_Enter);
             // 
             // rbDivisorInterSpace
             // 
@@ -135,7 +136,7 @@
             this.groupDivisorLast.Location = new System.Drawing.Point(16, 253);
             this.groupDivisorLast.Name = "groupDivisorLast";
             this.groupDivisorLast.Size = new System.Drawing.Size(172, 113);
-            this.groupDivisorLast.TabIndex = 6;
+            this.groupDivisorLast.TabIndex = 7;
             this.groupDivisorLast.TabStop = false;
             this.groupDivisorLast.Text = "区切り文字(最後)";
             // 
@@ -149,6 +150,7 @@
             this.txtDivisorLastCustom.Name = "txtDivisorLastCustom";
             this.txtDivisorLastCustom.Size = new System.Drawing.Size(156, 19);
             this.txtDivisorLastCustom.TabIndex = 4;
+            this.txtDivisorLastCustom.Enter += new System.EventHandler(this.textBox_Enter);
             // 
             // rbDivisorLastSpace
             // 
@@ -200,7 +202,8 @@
             this.txtLoopMin.Location = new System.Drawing.Point(16, 65);
             this.txtLoopMin.Name = "txtLoopMin";
             this.txtLoopMin.Size = new System.Drawing.Size(168, 19);
-            this.txtLoopMin.TabIndex = 8;
+            this.txtLoopMin.TabIndex = 3;
+            this.txtLoopMin.Enter += new System.EventHandler(this.textBox_Enter);
             // 
             // labelLoopMax
             // 
@@ -209,7 +212,7 @@
             this.labelLoopMax.Location = new System.Drawing.Point(12, 87);
             this.labelLoopMax.Name = "labelLoopMax";
             this.labelLoopMax.Size = new System.Drawing.Size(112, 19);
-            this.labelLoopMax.TabIndex = 9;
+            this.labelLoopMax.TabIndex = 4;
             this.labelLoopMax.Text = "ループ最大値";
             // 
             // txtLoopMax
@@ -219,7 +222,8 @@
             this.txtLoopMax.Location = new System.Drawing.Point(16, 109);
             this.txtLoopMax.Name = "txtLoopMax";
             this.txtLoopMax.Size = new System.Drawing.Size(168, 19);
-            this.txtLoopMax.TabIndex = 10;
+            this.txtLoopMax.TabIndex = 5;
+            this.txtLoopMax.Enter += new System.EventHandler(this.textBox_Enter);
             // 
             // labelLoopMin
             // 
@@ -228,7 +232,7 @@
             this.labelLoopMin.Location = new System.Drawing.Point(12, 43);
             this.labelLoopMin.Name = "labelLoopMin";
             this.labelLoopMin.Size = new System.Drawing.Size(112, 19);
-            this.labelLoopMin.TabIndex = 7;
+            this.labelLoopMin.TabIndex = 2;
             this.labelLoopMin.Text = "ループ最小値";
             // 
             // btnEnter
@@ -237,7 +241,7 @@
             this.btnEnter.Location = new System.Drawing.Point(113, 372);
             this.btnEnter.Name = "btnEnter";
             this.btnEnter.Size = new System.Drawing.Size(75, 23);
-            this.btnEnter.TabIndex = 11;
+            this.btnEnter.TabIndex = 8;
             this.btnEnter.Text = "追加";
             this.btnEnter.UseVisualStyleBackColor = true;
             this.btnEnter.Click += new System.EventHandler(this.btnEnter_Click);
@@ -249,7 +253,9 @@
             this.txtName.Location = new System.Drawing.Point(88, 12);
             this.txtName.Name = "txtName";
             this.txtName.Size = new System.Drawing.Size(100, 19);
-            this.txtName.TabIndex = 13;
+            this.txtName.TabIndex = 1;
+            this.txtName.Text = "var";
+            this.txtName.Enter += new System.EventHandler(this.textBox_Enter);
             // 
             // labelName
             // 
@@ -260,7 +266,7 @@
             this.labelName.Location = new System.Drawing.Point(16, 12);
             this.labelName.Name = "labelName";
             this.labelName.Size = new System.Drawing.Size(47, 19);
-            this.labelName.TabIndex = 12;
+            this.labelName.TabIndex = 0;
             this.labelName.Text = "名前";
             // 
             // FormEditLoop

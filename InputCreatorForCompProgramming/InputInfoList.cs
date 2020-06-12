@@ -25,7 +25,7 @@ namespace InputCreatorForCompProgramming
             {
                 listStr += item + ",";
             }
-            string text = "リスト[" + listStr + "]";
+            string text = "リスト[" + this.name + "]:[" + listStr + "]";
             return text;
         }
 

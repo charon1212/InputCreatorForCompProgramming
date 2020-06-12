@@ -51,7 +51,7 @@
             this.btnEnter.Location = new System.Drawing.Point(108, 210);
             this.btnEnter.Name = "btnEnter";
             this.btnEnter.Size = new System.Drawing.Size(75, 23);
-            this.btnEnter.TabIndex = 5;
+            this.btnEnter.TabIndex = 7;
             this.btnEnter.Text = "追加";
             this.btnEnter.UseVisualStyleBackColor = true;
             this.btnEnter.Click += new System.EventHandler(this.btnEnter_Click);
@@ -63,7 +63,7 @@
             this.labelMin.Location = new System.Drawing.Point(11, 37);
             this.labelMin.Name = "labelMin";
             this.labelMin.Size = new System.Drawing.Size(66, 19);
-            this.labelMin.TabIndex = 0;
+            this.labelMin.TabIndex = 2;
             this.labelMin.Text = "最小値";
             // 
             // txtMax
@@ -73,7 +73,8 @@
             this.txtMax.Location = new System.Drawing.Point(83, 66);
             this.txtMax.Name = "txtMax";
             this.txtMax.Size = new System.Drawing.Size(100, 19);
-            this.txtMax.TabIndex = 3;
+            this.txtMax.TabIndex = 5;
+            this.txtMax.Enter += new System.EventHandler(this.textBox_Enter);
             // 
             // labelMax
             // 
@@ -82,7 +83,7 @@
             this.labelMax.Location = new System.Drawing.Point(11, 66);
             this.labelMax.Name = "labelMax";
             this.labelMax.Size = new System.Drawing.Size(66, 19);
-            this.labelMax.TabIndex = 2;
+            this.labelMax.TabIndex = 4;
             this.labelMax.Text = "最大値";
             // 
             // groupDivisor
@@ -98,7 +99,7 @@
             this.groupDivisor.Location = new System.Drawing.Point(11, 91);
             this.groupDivisor.Name = "groupDivisor";
             this.groupDivisor.Size = new System.Drawing.Size(172, 113);
-            this.groupDivisor.TabIndex = 4;
+            this.groupDivisor.TabIndex = 6;
             this.groupDivisor.TabStop = false;
             this.groupDivisor.Text = "区切り文字";
             // 
@@ -112,6 +113,7 @@
             this.txtDivisorCustom.Name = "txtDivisorCustom";
             this.txtDivisorCustom.Size = new System.Drawing.Size(156, 19);
             this.txtDivisorCustom.TabIndex = 4;
+            this.txtDivisorCustom.Enter += new System.EventHandler(this.textBox_Enter);
             // 
             // rbDivisorSpace
             // 
@@ -163,7 +165,8 @@
             this.txtMin.Location = new System.Drawing.Point(83, 37);
             this.txtMin.Name = "txtMin";
             this.txtMin.Size = new System.Drawing.Size(100, 19);
-            this.txtMin.TabIndex = 1;
+            this.txtMin.TabIndex = 3;
+            this.txtMin.Enter += new System.EventHandler(this.textBox_Enter);
             // 
             // txtName
             // 
@@ -172,7 +175,9 @@
             this.txtName.Location = new System.Drawing.Point(83, 12);
             this.txtName.Name = "txtName";
             this.txtName.Size = new System.Drawing.Size(100, 19);
-            this.txtName.TabIndex = 7;
+            this.txtName.TabIndex = 1;
+            this.txtName.Text = "var";
+            this.txtName.Enter += new System.EventHandler(this.textBox_Enter);
             // 
             // labelName
             // 
@@ -183,7 +188,7 @@
             this.labelName.Location = new System.Drawing.Point(11, 12);
             this.labelName.Name = "labelName";
             this.labelName.Size = new System.Drawing.Size(47, 19);
-            this.labelName.TabIndex = 6;
+            this.labelName.TabIndex = 0;
             this.labelName.Text = "名前";
             // 
             // FormEditInteger
@@ -201,6 +206,7 @@
             this.Controls.Add(this.btnEnter);
             this.Name = "FormEditInteger";
             this.Text = "整数";
+            this.Load += new System.EventHandler(this.FormEditInteger_Load);
             this.groupDivisor.ResumeLayout(false);
             this.groupDivisor.PerformLayout();
             this.ResumeLayout(false);

@@ -79,7 +79,7 @@ namespace InputCreatorForCompProgramming
             }
             catch (ArgumentException argEx)
             {
-                validateMessage += "最小値を数式に変換できませんでした。\r\n" + "エラーメッセージ：" + argEx.Message + "\r\n";
+                validateMessage += "最大値を数式に変換できませんでした。\r\n" + "エラーメッセージ：" + argEx.Message + "\r\n";
             }
 
             if (!rbDivisorInterNewLine.Checked && !rbDivisorInterSpace.Checked &&
@@ -120,6 +120,11 @@ namespace InputCreatorForCompProgramming
             // フォームを閉じる
             this.Close();
 
+        }
+
+        private void textBox_Enter(object sender, EventArgs e)
+        {
+            if (sender is TextBox textBox) textBox.SelectAll();
         }
 
     }
