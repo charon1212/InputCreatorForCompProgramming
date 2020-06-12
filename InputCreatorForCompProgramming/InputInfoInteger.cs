@@ -13,18 +13,22 @@ namespace InputCreatorForCompProgramming
 
         private MathTree min;
         private MathTree max;
+        private String minStr;
+        private String maxStr;
         private string divisor;
 
-        public InputInfoInteger(MathTree min, MathTree max, string divisor)
+        public InputInfoInteger(MathTree min, MathTree max, String minStr, String maxStr, string divisor)
         {
             this.min = min;
             this.max = max;
+            this.minStr = minStr;
+            this.maxStr = maxStr;
             this.divisor = divisor;
         }
 
         public override string makeDisplayText()
         {
-            string text = "整数[" + min.ToString() + "～" + max.ToString() + "]";
+            string text = "整数[" + minStr + "～" + maxStr + "]";
             return text;
         }
 

@@ -104,7 +104,7 @@ namespace InputCreatorForCompProgramming
             string divisorLast = InputInfoLogic.getDivisor(rbDivisorLastNewLine.Checked, rbDivisorLastSpace.Checked, rbDivisorLastEmpty.Checked, rbDivisorLastCustom.Checked, txtDivisorLastCustom.Text);
 
             // FormEditIntegerの戻り値設定
-            var inputInfoLoopStart = new InputInfoLoopStart(treeLoopMin, treeLoopMax, divisorInter, divisorLast);
+            var inputInfoLoopStart = new InputInfoLoopStart(treeLoopMin, treeLoopMax, txtLoopMin.Text, txtLoopMax.Text, divisorInter, divisorLast);
             this.inputInfoLoopStart = inputInfoLoopStart;
 
             // DialogResultの設定

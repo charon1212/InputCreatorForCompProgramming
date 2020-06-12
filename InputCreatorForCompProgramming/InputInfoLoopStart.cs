@@ -12,19 +12,23 @@ namespace InputCreatorForCompProgramming
     {
         MathTree loopMin;
         MathTree loopMax;
+        String loopMinStr;
+        String loopmaxStr;
         public string divisorInter { get; }
         public string divisorLast { get; }
 
-        public InputInfoLoopStart(MathTree loopMin, MathTree loopMax, string divisorInter, string divisorLast)
+        public InputInfoLoopStart(MathTree loopMin, MathTree loopMax, String loopMinStr, String loopMaxStr, string divisorInter, string divisorLast)
         {
             this.loopMin = loopMin;
             this.loopMax = loopMax;
+            this.loopMinStr = loopMinStr;
+            this.loopmaxStr = loopMaxStr;
             this.divisorInter = divisorInter;
             this.divisorLast = divisorLast;
         }
         public override string makeDisplayText()
         {
-            string text = "ループ[" + loopMin.ToString() + "～" + loopMax.ToString() + "]";
+            string text = "ループ[" + loopMinStr + "～" + loopmaxStr + "]";
             return text;
         }
         public long getLoopLength(Random rnd, ref Dictionary<string, string> arg)

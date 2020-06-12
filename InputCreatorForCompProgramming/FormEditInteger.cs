@@ -35,7 +35,8 @@ namespace InputCreatorForCompProgramming
             {
                 inputInfo = this.inputInfoInteger;
                 return DialogResult.OK;
-            } else
+            }
+            else
             {
                 inputInfo = null;
                 return DialogResult.Cancel;
@@ -58,7 +59,8 @@ namespace InputCreatorForCompProgramming
                 {
                     validateMessage += "最小値の評価結果が整数になりません。\r\n";
                 }
-            } catch (ArgumentException argEx)
+            }
+            catch (ArgumentException argEx)
             {
                 validateMessage += "最小値を数式に変換できませんでした。\r\n" + "エラーメッセージ：" + argEx.Message + "\r\n";
             }
@@ -75,12 +77,13 @@ namespace InputCreatorForCompProgramming
                 validateMessage += "最小値を数式に変換できませんでした。\r\n" + "エラーメッセージ：" + argEx.Message + "\r\n";
             }
 
-            if(!rbDivisorNewLine.Checked && !rbDivisorSpace.Checked &&
-                    !rbDivisorEmpty.Checked && !rbDivisorCustom.Checked){
+            if (!rbDivisorNewLine.Checked && !rbDivisorSpace.Checked &&
+                    !rbDivisorEmpty.Checked && !rbDivisorCustom.Checked)
+            {
                 validateMessage += "区切り文字を指定してください。\r\n";
             }
-            
-            if(validateMessage.Length > 0)
+
+            if (validateMessage.Length > 0)
             {
                 MessageBox.Show(validateMessage);
                 return;
@@ -90,7 +93,7 @@ namespace InputCreatorForCompProgramming
             string divisor = InputInfoLogic.getDivisor(rbDivisorNewLine.Checked, rbDivisorSpace.Checked, rbDivisorEmpty.Checked, rbDivisorCustom.Checked, txtDivisorCustom.Text);
 
             // FormEditIntegerの戻り値設定
-            var inputinfoInteger = new InputInfoInteger(treeMin, treeMax, divisor);
+            var inputinfoInteger = new InputInfoInteger(treeMin, treeMax, txtMin.Text, txtMax.Text, divisor);
             this.inputInfoInteger = inputinfoInteger;
 
             // DialogResultの設定
