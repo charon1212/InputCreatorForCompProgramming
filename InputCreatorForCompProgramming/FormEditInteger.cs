@@ -82,6 +82,11 @@ namespace InputCreatorForCompProgramming
             {
                 validateMessage += "区切り文字を指定してください。\r\n";
             }
+            string name = txtName.Text;
+            if (!InputInfoLogic.validateVariableName(name))
+            {
+                validateMessage += "名前に使用できない文字列が含まれているか、または名前の先頭が数値です。\r\n";
+            }
 
             if (validateMessage.Length > 0)
             {
@@ -94,6 +99,7 @@ namespace InputCreatorForCompProgramming
 
             // FormEditIntegerの戻り値設定
             var inputinfoInteger = new InputInfoInteger(treeMin, treeMax, txtMin.Text, txtMax.Text, divisor);
+            inputinfoInteger.name = name;
             this.inputInfoInteger = inputinfoInteger;
 
             // DialogResultの設定

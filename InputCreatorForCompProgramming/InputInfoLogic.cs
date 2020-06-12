@@ -17,7 +17,26 @@ namespace InputCreatorForCompProgramming
         {
             return tree.checkDataType() == dataType;
         }
-
+        public static readonly string variableLetterChar = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz_";
+        /// <summary>
+        /// 文字列が変数名として使用できることをチェックする。
+        /// 使用可能文字：a～z,A～Z,0～9,_　（ただし、先頭は0～9以外）
+        /// 文字列長：1以上
+        /// </summary>
+        /// <param name="str">調べる対象の文字列</param>
+        /// <returns>使用できる場合はtrueを返す。</returns>
+        public static bool validateVariableName(String str)
+        {
+            if (str.Length == 0) return false;
+            if (!checkIsLetterChar(str[0])) return false;
+            for (int i = 1; i < str.Length; i++) if (!checkIsLetterChar(str[i]) || !Char.IsDigit(str[i])) return false;
+            return true;
+        }
+        private static bool checkIsLetterChar(Char c)
+        {
+            for (int i = 0; i < variableLetterChar.Length; i++) if (c == variableLetterChar[i]) return true;
+            return false;
+        }
         /// <summary>
         /// 区切り文字を取得する
         /// </summary>

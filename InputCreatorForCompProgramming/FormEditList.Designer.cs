@@ -39,6 +39,8 @@
             this.btnItemAdd = new System.Windows.Forms.Button();
             this.txtItem = new System.Windows.Forms.TextBox();
             this.btnItemDelete = new System.Windows.Forms.Button();
+            this.txtName = new System.Windows.Forms.TextBox();
+            this.labelName = new System.Windows.Forms.Label();
             this.groupDivisor.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -52,7 +54,7 @@
             this.groupDivisor.Controls.Add(this.rbDivisorCustom);
             this.groupDivisor.Controls.Add(this.rbDivisorNewLine);
             this.groupDivisor.Font = new System.Drawing.Font("MS UI Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.groupDivisor.Location = new System.Drawing.Point(12, 160);
+            this.groupDivisor.Location = new System.Drawing.Point(12, 201);
             this.groupDivisor.Name = "groupDivisor";
             this.groupDivisor.Size = new System.Drawing.Size(172, 113);
             this.groupDivisor.TabIndex = 5;
@@ -61,6 +63,8 @@
             // 
             // txtDivisorCustom
             // 
+            this.txtDivisorCustom.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.txtDivisorCustom.Enabled = false;
             this.txtDivisorCustom.Font = new System.Drawing.Font("MS UI Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.txtDivisorCustom.Location = new System.Drawing.Point(6, 83);
@@ -113,7 +117,7 @@
             // btnEnter
             // 
             this.btnEnter.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnEnter.Location = new System.Drawing.Point(109, 279);
+            this.btnEnter.Location = new System.Drawing.Point(109, 320);
             this.btnEnter.Name = "btnEnter";
             this.btnEnter.Size = new System.Drawing.Size(75, 23);
             this.btnEnter.TabIndex = 6;
@@ -128,16 +132,16 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.listBoxMain.FormattingEnabled = true;
             this.listBoxMain.ItemHeight = 12;
-            this.listBoxMain.Location = new System.Drawing.Point(12, 12);
+            this.listBoxMain.Location = new System.Drawing.Point(12, 37);
             this.listBoxMain.Name = "listBoxMain";
             this.listBoxMain.ScrollAlwaysVisible = true;
-            this.listBoxMain.Size = new System.Drawing.Size(172, 88);
+            this.listBoxMain.Size = new System.Drawing.Size(172, 100);
             this.listBoxMain.TabIndex = 7;
             // 
             // btnItemAdd
             // 
             this.btnItemAdd.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnItemAdd.Location = new System.Drawing.Point(12, 131);
+            this.btnItemAdd.Location = new System.Drawing.Point(12, 172);
             this.btnItemAdd.Name = "btnItemAdd";
             this.btnItemAdd.Size = new System.Drawing.Size(75, 23);
             this.btnItemAdd.TabIndex = 8;
@@ -149,7 +153,7 @@
             // 
             this.txtItem.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtItem.Location = new System.Drawing.Point(12, 106);
+            this.txtItem.Location = new System.Drawing.Point(12, 147);
             this.txtItem.Name = "txtItem";
             this.txtItem.Size = new System.Drawing.Size(172, 19);
             this.txtItem.TabIndex = 9;
@@ -157,7 +161,7 @@
             // btnItemDelete
             // 
             this.btnItemDelete.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnItemDelete.Location = new System.Drawing.Point(109, 131);
+            this.btnItemDelete.Location = new System.Drawing.Point(109, 172);
             this.btnItemDelete.Name = "btnItemDelete";
             this.btnItemDelete.Size = new System.Drawing.Size(75, 23);
             this.btnItemDelete.TabIndex = 10;
@@ -165,11 +169,32 @@
             this.btnItemDelete.UseVisualStyleBackColor = true;
             this.btnItemDelete.Click += new System.EventHandler(this.btnItemDelete_Click);
             // 
+            // txtName
+            // 
+            this.txtName.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtName.Location = new System.Drawing.Point(84, 12);
+            this.txtName.Name = "txtName";
+            this.txtName.Size = new System.Drawing.Size(100, 19);
+            this.txtName.TabIndex = 12;
+            // 
+            // labelName
+            // 
+            this.labelName.AutoSize = true;
+            this.labelName.Font = new System.Drawing.Font("MS UI Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.labelName.Location = new System.Drawing.Point(12, 12);
+            this.labelName.Name = "labelName";
+            this.labelName.Size = new System.Drawing.Size(47, 19);
+            this.labelName.TabIndex = 11;
+            this.labelName.Text = "名前";
+            // 
             // FormEditList
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(196, 316);
+            this.ClientSize = new System.Drawing.Size(196, 357);
+            this.Controls.Add(this.txtName);
+            this.Controls.Add(this.labelName);
             this.Controls.Add(this.btnItemDelete);
             this.Controls.Add(this.txtItem);
             this.Controls.Add(this.btnItemAdd);
@@ -198,5 +223,7 @@
         private System.Windows.Forms.Button btnItemAdd;
         private System.Windows.Forms.TextBox txtItem;
         private System.Windows.Forms.Button btnItemDelete;
+        private System.Windows.Forms.TextBox txtName;
+        private System.Windows.Forms.Label labelName;
     }
 }
