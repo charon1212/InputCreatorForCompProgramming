@@ -8,13 +8,17 @@ namespace InputCreatorForCompProgramming
 {
     public class InputInfoLoopEnd : InputInfoBase
     {
-        public InputInfoLoopEnd() : base(InputType.LoopEnd)
+        public InputInfoLoopEnd()
         {
         }
         public override string makeDisplayText()
         {
             string text = "ループ終了";
             return text;
+        }
+        public override string createInputData(Random rnd, ref Dictionary<string, string> arg)
+        {
+            return "";
         }
     }
 }

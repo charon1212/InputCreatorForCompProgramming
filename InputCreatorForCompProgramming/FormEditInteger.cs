@@ -1,4 +1,6 @@
-﻿using System;
+﻿using MathExpressionAnalysis;
+using MathExpressionAnalysis.Object;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -33,7 +35,8 @@ namespace InputCreatorForCompProgramming
             {
                 inputInfo = this.inputInfoInteger;
                 return DialogResult.OK;
-            } else
+            }
+            else
             {
                 inputInfo = null;
                 return DialogResult.Cancel;
@@ -42,35 +45,55 @@ namespace InputCreatorForCompProgramming
 
         private void btnEnter_Click(object sender, EventArgs e)
         {
+
             // バリデーション
             string validateMessage = "";
-            if (!InputInfoLogic.validateIntegerMin(txtMin.Text))
+
+            // 数式をツリーに変換。
+            MathTree treeMin = new MathTree();
+            MathTree treeMax = new MathTree();
+            try
             {
-                validateMessage += "最小値に数値を入力してください。\r\n";
+                treeMin = MathExpressionAnalysisLogic.getMathTreeFromString(txtMin.Text);
+                if (!InputInfoLogic.validateMathTreeDataType(treeMin, DataType.Integer))
+                {
+                    validateMessage += "最小値の評価結果が整数になりません。\r\n";
+                }
             }
-            if (!InputInfoLogic.validateIntegerMax(txtMax.Text))
+            catch (ArgumentException argEx)
             {
-                validateMessage += "最大値に数値を入力してください。\r\n";
+                validateMessage += "最小値を数式に変換できませんでした。\r\n" + "エラーメッセージ：" + argEx.Message + "\r\n";
             }
-            if(!rbDivisorNewLine.Checked && !rbDivisorSpace.Checked &&
-                    !rbDivisorEmpty.Checked && !rbDivisorCustom.Checked){
+            try
+            {
+                treeMax = MathExpressionAnalysisLogic.getMathTreeFromString(txtMax.Text);
+                if (!InputInfoLogic.validateMathTreeDataType(treeMax, DataType.Integer))
+                {
+                    validateMessage += "最大値の評価結果が整数になりません。\r\n";
+                }
+            }
+            catch (ArgumentException argEx)
+            {
+                validateMessage += "最小値を数式に変換できませんでした。\r\n" + "エラーメッセージ：" + argEx.Message + "\r\n";
+            }
+
+            if (!rbDivisorNewLine.Checked && !rbDivisorSpace.Checked &&
+                    !rbDivisorEmpty.Checked && !rbDivisorCustom.Checked)
+            {
                 validateMessage += "区切り文字を指定してください。\r\n";
             }
-            
-            if(validateMessage.Length > 0)
+
+            if (validateMessage.Length > 0)
             {
                 MessageBox.Show(validateMessage);
                 return;
             }
 
             // 変換
-            long min, max;
-            if(!long.TryParse(txtMin.Text, out min)) return;
-            if(!long.TryParse(txtMax.Text, out max)) return;
             string divisor = InputInfoLogic.getDivisor(rbDivisorNewLine.Checked, rbDivisorSpace.Checked, rbDivisorEmpty.Checked, rbDivisorCustom.Checked, txtDivisorCustom.Text);
 
             // FormEditIntegerの戻り値設定
-            var inputinfoInteger = new InputInfoInteger(min, max, divisor);
+            var inputinfoInteger = new InputInfoInteger(treeMin, treeMax, txtMin.Text, txtMax.Text, divisor);
             this.inputInfoInteger = inputinfoInteger;
 
             // DialogResultの設定
