@@ -81,6 +81,7 @@
             this.rbDivisorSpace.TabIndex = 1;
             this.rbDivisorSpace.Text = "スペース";
             this.rbDivisorSpace.UseVisualStyleBackColor = true;
+            this.rbDivisorSpace.CheckedChanged += new System.EventHandler(this.rbDivisorCustom_CheckedChanged);
             // 
             // rbDivisorEmpty
             // 
@@ -91,6 +92,7 @@
             this.rbDivisorEmpty.TabIndex = 2;
             this.rbDivisorEmpty.Text = "無し";
             this.rbDivisorEmpty.UseVisualStyleBackColor = true;
+            this.rbDivisorEmpty.CheckedChanged += new System.EventHandler(this.rbDivisorCustom_CheckedChanged);
             // 
             // rbDivisorCustom
             // 
@@ -101,6 +103,7 @@
             this.rbDivisorCustom.TabIndex = 3;
             this.rbDivisorCustom.Text = "カスタム";
             this.rbDivisorCustom.UseVisualStyleBackColor = true;
+            this.rbDivisorCustom.CheckedChanged += new System.EventHandler(this.rbDivisorCustom_CheckedChanged);
             // 
             // rbDivisorNewLine
             // 
@@ -113,6 +116,7 @@
             this.rbDivisorNewLine.TabStop = true;
             this.rbDivisorNewLine.Text = "改行";
             this.rbDivisorNewLine.UseVisualStyleBackColor = true;
+            this.rbDivisorNewLine.CheckedChanged += new System.EventHandler(this.rbDivisorCustom_CheckedChanged);
             // 
             // btnEnter
             // 
@@ -203,6 +207,7 @@
             this.Controls.Add(this.groupDivisor);
             this.Name = "FormEditList";
             this.Text = "リスト";
+            this.Load += new System.EventHandler(this.FormEditList_Load);
             this.groupDivisor.ResumeLayout(false);
             this.groupDivisor.PerformLayout();
             this.ResumeLayout(false);

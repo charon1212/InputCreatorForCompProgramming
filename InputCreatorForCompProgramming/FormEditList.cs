@@ -111,5 +111,10 @@ namespace InputCreatorForCompProgramming
             this.Close();
 
         }
+
+        private void FormEditList_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
