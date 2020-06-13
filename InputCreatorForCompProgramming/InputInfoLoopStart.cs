@@ -28,7 +28,7 @@ namespace InputCreatorForCompProgramming
         }
         public override string makeDisplayText()
         {
-            string text = "ループ[" + loopMinStr + "～" + loopmaxStr + "]";
+            string text = "ループ[" + this.name + "]:[" + loopMinStr + "～" + loopmaxStr + "]";
             return text;
         }
         public long getLoopLength(Random rnd, ref Dictionary<string, string> arg)

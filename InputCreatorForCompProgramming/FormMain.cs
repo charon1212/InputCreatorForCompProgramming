@@ -27,6 +27,7 @@ namespace InputCreatorForCompProgramming
         {
             InputInfoBase inputInfo = null;
             var formEditInteger = new FormEditInteger();
+            formEditInteger.variableNameList = this.getVariableNameList();
 
             // フォームを開いて結果を受け取る
             DialogResult dialogResult = formEditInteger.ShowDialog(this, out inputInfo);
@@ -42,6 +43,7 @@ namespace InputCreatorForCompProgramming
         {
             InputInfoBase inputInfo = null;
             var formEditList = new FormEditList();
+            formEditList.variableNameList = this.getVariableNameList();
 
             // フォームを開いて結果を受け取る
             DialogResult dialogResult = formEditList.ShowDialog(this, out inputInfo);
@@ -56,6 +58,7 @@ namespace InputCreatorForCompProgramming
         {
             InputInfoBase inputInfo = null;
             var formEditLoop = new FormEditLoop();
+            formEditLoop.variableNameList = this.getVariableNameList();
 
             // フォームを開いて結果を受け取る
             DialogResult dialogResult = formEditLoop.ShowDialog(this, out inputInfo);
@@ -115,6 +118,13 @@ namespace InputCreatorForCompProgramming
             string indent = "";
             for (int i = 0; i < loopDepth; i++) indent += "  ";
             return indent;
+        }
+
+        private List<string> getVariableNameList()
+        {
+            var variableNameList = new List<string>();
+            foreach (InputInfoBase inputInfo in listInputInfo) variableNameList.Add(inputInfo.name);
+            return variableNameList;
         }
 
     }

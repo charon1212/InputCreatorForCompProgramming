@@ -28,7 +28,7 @@ namespace InputCreatorForCompProgramming
 
         public override string makeDisplayText()
         {
-            string text = "整数[" + minStr + "～" + maxStr + "]";
+            string text = "整数[" + this.name + "]:[" + minStr + "～" + maxStr + "]";
             return text;
         }
 

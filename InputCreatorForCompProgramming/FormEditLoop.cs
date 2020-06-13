@@ -16,6 +16,8 @@ namespace InputCreatorForCompProgramming
     {
         // 戻り値保存用のデータ
         InputInfoLoopStart inputInfoLoopStart = null;
+        // 変数名のリスト
+        public List<string> variableNameList { private get; set; }
 
         public FormEditLoop()
         {
@@ -79,7 +81,7 @@ namespace InputCreatorForCompProgramming
             }
             catch (ArgumentException argEx)
             {
-                validateMessage += "最小値を数式に変換できませんでした。\r\n" + "エラーメッセージ：" + argEx.Message + "\r\n";
+                validateMessage += "最大値を数式に変換できませんでした。\r\n" + "エラーメッセージ：" + argEx.Message + "\r\n";
             }
 
             if (!rbDivisorInterNewLine.Checked && !rbDivisorInterSpace.Checked &&
@@ -91,6 +93,16 @@ namespace InputCreatorForCompProgramming
                     !rbDivisorLastEmpty.Checked && !rbDivisorLastCustom.Checked)
             {
                 validateMessage += "区切り文字を指定してください。\r\n";
+            }
+
+            string name = txtName.Text;
+            if (!InputInfoLogic.validateVariableName(name))
+            {
+                validateMessage += "名前に使用できない文字列が含まれているか、または名前の先頭が数値です。\r\n";
+            }
+            else if (variableNameList.Contains(name))
+            {
+                validateMessage += "この変数名はすでに使用されています。\r\n";
             }
 
             if (validateMessage.Length > 0)
@@ -105,6 +117,7 @@ namespace InputCreatorForCompProgramming
 
             // FormEditIntegerの戻り値設定
             var inputInfoLoopStart = new InputInfoLoopStart(treeLoopMin, treeLoopMax, txtLoopMin.Text, txtLoopMax.Text, divisorInter, divisorLast);
+            inputInfoLoopStart.name = name;
             this.inputInfoLoopStart = inputInfoLoopStart;
 
             // DialogResultの設定
@@ -113,6 +126,11 @@ namespace InputCreatorForCompProgramming
             // フォームを閉じる
             this.Close();
 
+        }
+
+        private void textBox_Enter(object sender, EventArgs e)
+        {
+            if (sender is TextBox textBox) textBox.SelectAll();
         }
 
     }
