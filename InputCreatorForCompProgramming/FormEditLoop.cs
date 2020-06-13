@@ -16,6 +16,8 @@ namespace InputCreatorForCompProgramming
     {
         // 戻り値保存用のデータ
         InputInfoLoopStart inputInfoLoopStart = null;
+        // 変数名のリスト
+        public List<string> variableNameList { private get; set; }
 
         public FormEditLoop()
         {
@@ -97,6 +99,10 @@ namespace InputCreatorForCompProgramming
             if (!InputInfoLogic.validateVariableName(name))
             {
                 validateMessage += "名前に使用できない文字列が含まれているか、または名前の先頭が数値です。\r\n";
+            }
+            else if (variableNameList.Contains(name))
+            {
+                validateMessage += "この変数名はすでに使用されています。\r\n";
             }
 
             if (validateMessage.Length > 0)
