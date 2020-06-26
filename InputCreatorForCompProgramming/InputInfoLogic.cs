@@ -10,33 +10,12 @@ namespace InputCreatorForCompProgramming
 {
     public static class InputInfoLogic
     {
+        // 区切り文字：半角スペース
         public const string DIVISOR_SPACE = " ";
+        // 区切り文字：改行
         public const string DIVISOR_NEWLINE = "\r\n";
+        // 区切り文字；なし
         public const string DIVISOR_EMPTY = "";
-        public static bool validateMathTreeDataType(MathTree tree, DataType dataType)
-        {
-            return tree.checkDataType() == dataType;
-        }
-        public static readonly string variableLetterChar = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz_";
-        /// <summary>
-        /// 文字列が変数名として使用できることをチェックする。
-        /// 使用可能文字：a～z,A～Z,0～9,_　（ただし、先頭は0～9以外）
-        /// 文字列長：1以上
-        /// </summary>
-        /// <param name="str">調べる対象の文字列</param>
-        /// <returns>使用できる場合はtrueを返す。</returns>
-        public static bool validateVariableName(String str)
-        {
-            if (str.Length == 0) return false;
-            if (!checkIsLetterChar(str[0])) return false;
-            for (int i = 1; i < str.Length; i++) if (!checkIsLetterChar(str[i]) && !Char.IsDigit(str[i])) return false;
-            return true;
-        }
-        private static bool checkIsLetterChar(Char c)
-        {
-            for (int i = 0; i < variableLetterChar.Length; i++) if (c == variableLetterChar[i]) return true;
-            return false;
-        }
         /// <summary>
         /// 区切り文字を取得する
         /// </summary>
@@ -72,16 +51,33 @@ namespace InputCreatorForCompProgramming
             }
         }
 
+        /// <summary>
+        /// 入力データ情報をもとに入力データを作成し、文字列表現を返す。
+        /// </summary>
+        /// <param name="list">入力データ情報のリスト。</param>
+        /// <param name="rnd">乱数生成器。</param>
+        /// <returns></returns>
         public static string createInputInfo(List<InputInfoBase> list, Random rnd)
         {
             var arg = new Dictionary<string, string>(); // のちの機能拡張(他の入力情報を制約に使う(#13))で使う予定
             return createInputInfo(list, rnd, ref arg);
         }
 
+        /// <summary>
+        /// 入力データ情報をもとに入力データを作成し、文字列表現を返す。
+        /// </summary>
+        /// <param name="list">入力データ情報のリスト。</param>
+        /// <param name="rnd">乱数生成器。</param>
+        /// <param name="arg">引数情報。</param>
+        /// <returns></returns>
         private static string createInputInfo(List<InputInfoBase> list, Random rnd, ref Dictionary<string, string> arg)
         {
+
+            // 上からi番目の「ループの深さ1以上であるグループ」の入力データ情報のリストのリスト。
             List<List<InputInfoBase>> inLoopInputInfoList;
+            // ループの深さ1以上の部分を取り除いた入力データ情報のリスト。
             List<InputInfoBase> inputInfoListExceptInLoop;
+            // 入力データ情報のリストから、ループの深さ1以上の部分を分離する。
             excludeInLoop(list, out inputInfoListExceptInLoop, out inLoopInputInfoList);
 
             string inputInfoAllStr = "";
@@ -107,6 +103,25 @@ namespace InputCreatorForCompProgramming
             return inputInfoAllStr;
         }
 
+        /// <summary>
+        /// 入力データ情報のリストから、ループの深さ1以上の部分を部分を分離する。
+        /// また、ループの深さ0に戻るループ終了点の入力データ情報を削除する。
+        /// ループの深さ0→1のループ開始点の入力データ情報は、そのまま残す。
+        /// </summary>
+        /// <param name="list">入力データ情報のリスト</param>
+        /// <param name="inputInfoListExceptInLoop">出力用の変数。引数listからループの深さ1以上の部分と、ループの深さ1→0のループ終了点を削除したもの。</param>
+        /// <param name="inLoopInputInfoList">listからループの深さ1以上の部分入力データ情報のリストのリスト。
+        /// 外側のリストは、上から数えて何番目のループの深さ1以上のグループであるかを表す。
+        /// 内側のリストは、そのグループ内の入力データ情報のリストを表す。</param>
+        /// <example>
+        /// 例えば、listが以下のような構成の場合：
+        /// LoopStart_1 Integer_2 LoopStart_3 Integer_4 List_5 LoopEnd_6 LoopEnd_7 Integer_8 LoopStart_9 List_10 LoopEnd_11 List_12 List_13
+        /// inputInfoListExceptInLoopは以下の通り：
+        /// LoopStart_1 Integer_8 LoopStart_9 List_12 List_13
+        /// inLoopInputInfoListはサイズ2のリストで、以下の通り：
+        /// [0] → Integer_2 LoopStart_3 Integer_4 List_5 LoopEnd_6
+        /// [1] → List_10
+        /// </example>
         private static void excludeInLoop(List<InputInfoBase> list, out List<InputInfoBase> inputInfoListExceptInLoop, out List<List<InputInfoBase>> inLoopInputInfoList)
         {
             inputInfoListExceptInLoop = new List<InputInfoBase>();
@@ -121,12 +136,15 @@ namespace InputCreatorForCompProgramming
                     loopDepth += getLoopDepthVariation(inputInfo);
                     if (loopDepth > 0)
                     {
+                        // 深さが0→1となった場合、一時的にループ深さ1以上の部分を保存しておくtemp変数を初期化する。
                         tempInLoopInputInfoList = new List<InputInfoBase>();
                     }
                     else if (loopDepth < 0)
                     {
+                        // 深さが0→-1となった場合、入力エラー。
                         throw new ArgumentException("ループの開始が存在しないループの終了が登録されています。");
                     }
+                    // 深さが0の部分は、ループ終了点以外、どの入力データ情報でも戻り値用の変数に保存する。
                     inputInfoListExceptInLoop.Add(inputInfo);
                 }
                 else
@@ -134,14 +152,17 @@ namespace InputCreatorForCompProgramming
                     loopDepth += getLoopDepthVariation(inputInfo);
                     if (loopDepth == 0)
                     {
+                        // ループの深さが1→0となったら、tempを戻り値用の変数に保存する。
                         inLoopInputInfoList.Add(tempInLoopInputInfoList);
                     }
                     else
                     {
+                        // 深さが1以上の部分に居続けている場合、tempにいったん保存する。
                         tempInLoopInputInfoList.Add(inputInfo);
                     }
                 }
             }
+            // 全てのループを調べても、深さが0に戻らない場合、入力エラー。
             if (loopDepth != 0) throw new ArgumentException("ループの終了が登録されていないループがあります。");
         }
 

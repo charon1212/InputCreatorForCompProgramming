@@ -94,7 +94,7 @@ namespace InputCreatorForCompProgramming
             }
 
             string name = txtName.Text;
-            if (!InputInfoLogic.validateVariableName(name))
+            if (!InputInfoValidation.validateVariableName(name))
             {
                 validateMessage += "名前に使用できない文字列が含まれているか、または名前の先頭が数値です。\r\n";
             } else if (variableNameList.Contains(name))

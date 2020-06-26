@@ -76,6 +76,7 @@
     <Compile Include="InputInfoLoopStart.cs" />
     <Compile Include="InputInfoList.cs" />
     <Compile Include="InputInfoLogic.cs" />
+    <Compile Include="InputInfoValidation.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="FormEditInteger.resx">

@@ -58,7 +58,7 @@ namespace InputCreatorForCompProgramming
             try
             {
                 treeMin = MathExpressionAnalysisLogic.getMathTreeFromString(txtMin.Text);
-                if (!InputInfoLogic.validateMathTreeDataType(treeMin, DataType.Integer))
+                if (!InputInfoValidation.validateMathTreeDataType(treeMin, DataType.Integer))
                 {
                     validateMessage += "最小値の評価結果が整数になりません。\r\n";
                 }
@@ -70,7 +70,7 @@ namespace InputCreatorForCompProgramming
             try
             {
                 treeMax = MathExpressionAnalysisLogic.getMathTreeFromString(txtMax.Text);
-                if (!InputInfoLogic.validateMathTreeDataType(treeMax, DataType.Integer))
+                if (!InputInfoValidation.validateMathTreeDataType(treeMax, DataType.Integer))
                 {
                     validateMessage += "最大値の評価結果が整数になりません。\r\n";
                 }
@@ -86,7 +86,7 @@ namespace InputCreatorForCompProgramming
                 validateMessage += "区切り文字を指定してください。\r\n";
             }
             string name = txtName.Text;
-            if (!InputInfoLogic.validateVariableName(name))
+            if (!InputInfoValidation.validateVariableName(name))
             {
                 validateMessage += "名前に使用できない文字列が含まれているか、または名前の先頭が数値です。\r\n";
             } else if (variableNameList.Contains(name))

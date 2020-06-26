@@ -62,7 +62,7 @@ namespace InputCreatorForCompProgramming
             try
             {
                 treeLoopMin = MathExpressionAnalysisLogic.getMathTreeFromString(txtLoopMin.Text);
-                if (!InputInfoLogic.validateMathTreeDataType(treeLoopMin, DataType.Integer))
+                if (!InputInfoValidation.validateMathTreeDataType(treeLoopMin, DataType.Integer))
                 {
                     validateMessage += "最小値の評価結果が整数になりません。\r\n";
                 }
@@ -74,7 +74,7 @@ namespace InputCreatorForCompProgramming
             try
             {
                 treeLoopMax = MathExpressionAnalysisLogic.getMathTreeFromString(txtLoopMax.Text);
-                if (!InputInfoLogic.validateMathTreeDataType(treeLoopMax, DataType.Integer))
+                if (!InputInfoValidation.validateMathTreeDataType(treeLoopMax, DataType.Integer))
                 {
                     validateMessage += "最大値の評価結果が整数になりません。\r\n";
                 }
@@ -96,7 +96,7 @@ namespace InputCreatorForCompProgramming
             }
 
             string name = txtName.Text;
-            if (!InputInfoLogic.validateVariableName(name))
+            if (!InputInfoValidation.validateVariableName(name))
             {
                 validateMessage += "名前に使用できない文字列が含まれているか、または名前の先頭が数値です。\r\n";
             }
