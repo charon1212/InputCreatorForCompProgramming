@@ -31,17 +31,18 @@ namespace InputCreatorForCompProgramming
             string text = "ループ[" + this.name + "]:[" + loopMinStr + "～" + loopmaxStr + "]";
             return text;
         }
-        public long getLoopLength(Random rnd, ref Dictionary<string, string> arg)
+        public long getLoopLength(Random rnd, ref Dictionary<string, Variable> arg)
         {
-            long evalLoopMin = loopMin.eval().valueInteger;
-            long evalLoopMax = loopMax.eval().valueInteger;
+            long evalLoopMin = loopMin.eval(arg).valueInteger;
+            long evalLoopMax = loopMax.eval(arg).valueInteger;
 
             double r = rnd.NextDouble();
             long result = evalLoopMin + (long)Math.Floor(r * (evalLoopMax - evalLoopMin + 1));
+            arg.Add(this.name, new Variable(result));
             return result;
         }
 
-        public override string createInputData(Random rnd, ref Dictionary<string, string> arg)
+        public override string createInputData(Random rnd, ref Dictionary<string, Variable> arg)
         {
             return "";
         }

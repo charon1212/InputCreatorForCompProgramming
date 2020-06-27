@@ -13,13 +13,8 @@ using System.Windows.Forms;
 
 namespace InputCreatorForCompProgramming
 {
-    public partial class FormEditInteger : Form
+    public partial class FormEditInteger : FormEditInputInfo
     {
-
-        // 戻り値保存用のデータ
-        InputInfoInteger inputInfoInteger = null;
-        // 変数名のリスト
-        public List<string> variableNameList { private get;  set; }
 
         public FormEditInteger()
         {
@@ -29,21 +24,6 @@ namespace InputCreatorForCompProgramming
         private void rbDivisorCustom_CheckedChanged(object sender, EventArgs e)
         {
             txtDivisorCustom.Enabled = rbDivisorCustom.Checked;
-        }
-
-        public DialogResult ShowDialog(IWin32Window owner, out InputInfoBase inputInfo)
-        {
-            var dialogResult = this.ShowDialog(owner);
-            if (dialogResult == DialogResult.OK && inputInfoInteger != null)
-            {
-                inputInfo = this.inputInfoInteger;
-                return DialogResult.OK;
-            }
-            else
-            {
-                inputInfo = null;
-                return DialogResult.Cancel;
-            }
         }
 
         private void btnEnter_Click(object sender, EventArgs e)
@@ -58,7 +38,7 @@ namespace InputCreatorForCompProgramming
             try
             {
                 treeMin = MathExpressionAnalysisLogic.getMathTreeFromString(txtMin.Text);
-                if (!InputInfoLogic.validateMathTreeDataType(treeMin, DataType.Integer))
+                if (!InputInfoValidation.validateMathTreeDataType(treeMin, DataType.Integer, this.availableVariableMap))
                 {
                     validateMessage += "最小値の評価結果が整数になりません。\r\n";
                 }
@@ -70,7 +50,7 @@ namespace InputCreatorForCompProgramming
             try
             {
                 treeMax = MathExpressionAnalysisLogic.getMathTreeFromString(txtMax.Text);
-                if (!InputInfoLogic.validateMathTreeDataType(treeMax, DataType.Integer))
+                if (!InputInfoValidation.validateMathTreeDataType(treeMax, DataType.Integer, this.availableVariableMap))
                 {
                     validateMessage += "最大値の評価結果が整数になりません。\r\n";
                 }
@@ -86,7 +66,7 @@ namespace InputCreatorForCompProgramming
                 validateMessage += "区切り文字を指定してください。\r\n";
             }
             string name = txtName.Text;
-            if (!InputInfoLogic.validateVariableName(name))
+            if (!InputInfoValidation.validateVariableName(name))
             {
                 validateMessage += "名前に使用できない文字列が含まれているか、または名前の先頭が数値です。\r\n";
             } else if (variableNameList.Contains(name))
@@ -106,7 +86,7 @@ namespace InputCreatorForCompProgramming
             // FormEditIntegerの戻り値設定
             var inputinfoInteger = new InputInfoInteger(treeMin, treeMax, txtMin.Text, txtMax.Text, divisor);
             inputinfoInteger.name = name;
-            this.inputInfoInteger = inputinfoInteger;
+            this.inputInfo = inputinfoInteger;
 
             // DialogResultの設定
             this.DialogResult = DialogResult.OK;

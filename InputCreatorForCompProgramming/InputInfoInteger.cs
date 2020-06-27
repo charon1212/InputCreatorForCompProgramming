@@ -32,19 +32,20 @@ namespace InputCreatorForCompProgramming
             return text;
         }
 
-        public override string createInputData(Random rnd, ref Dictionary<string, string> arg)
+        public override string createInputData(Random rnd, ref Dictionary<string, Variable> arg)
         {
             long inputData = makeInputData(rnd, ref arg);
             return inputData.ToString() + divisor;
         }
 
-        private long makeInputData(Random rnd, ref Dictionary<string, string> arg)
+        private long makeInputData(Random rnd, ref Dictionary<string, Variable> arg)
         {
-            long evalMin = min.eval().valueInteger;
-            long evalMax = max.eval().valueInteger;
+            long evalMin = min.eval(arg, null).valueInteger;
+            long evalMax = max.eval(arg, null).valueInteger;
 
             double r = rnd.NextDouble();
             long result = evalMin + (long)Math.Floor(r * (evalMax - evalMin + 1));
+            arg.Add(this.name, new Variable(result));
             return result;
         }
 

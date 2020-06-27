@@ -46,6 +46,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FormEditInputInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="FormEditInteger.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -76,8 +79,12 @@
     <Compile Include="InputInfoLoopStart.cs" />
     <Compile Include="InputInfoList.cs" />
     <Compile Include="InputInfoLogic.cs" />
+    <Compile Include="InputInfoValidation.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="FormEditInputInfo.resx">
+      <DependentUpon>FormEditInputInfo.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormEditInteger.resx">
       <DependentUpon>FormEditInteger.cs</DependentUpon>
     </EmbeddedResource>

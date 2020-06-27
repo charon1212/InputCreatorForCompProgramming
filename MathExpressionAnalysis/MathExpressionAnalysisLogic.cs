@@ -255,7 +255,7 @@ namespace MathExpressionAnalysis
                 // true/falseが続く場合は文法エラーなので除外すると、以下の条件式で識別できる。
                 if (nextExpr == null)
                 {
-                    terminalSymbol = new TerminalSymbol(expr, TerminalSymbolType.Decimal);
+                    terminalSymbol = new TerminalSymbol(expr, TerminalSymbolType.Variable);
                     return true;
                 }
                 else
