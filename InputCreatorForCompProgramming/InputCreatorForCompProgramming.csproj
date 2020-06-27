@@ -82,6 +82,9 @@
     <Compile Include="InputInfoValidation.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="FormEditInputInfo.resx">
+      <DependentUpon>FormEditInputInfo.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormEditInteger.resx">
       <DependentUpon>FormEditInteger.cs</DependentUpon>
     </EmbeddedResource>

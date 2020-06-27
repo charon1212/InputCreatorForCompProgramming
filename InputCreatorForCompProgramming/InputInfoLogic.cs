@@ -166,6 +166,11 @@ namespace InputCreatorForCompProgramming
             if (loopDepth != 0) throw new ArgumentException("ループの終了が登録されていないループがあります。");
         }
 
+        /// <summary>
+        /// ループの深さの変化量を取得する。
+        /// </summary>
+        /// <param name="inputInfoBase">入力データ情報</param>
+        /// <returns>ループの深さの変化量。</returns>
         private static int getLoopDepthVariation(InputInfoBase inputInfoBase)
         {
             if (inputInfoBase is InputInfoLoopStart inputInfoLoopStart)

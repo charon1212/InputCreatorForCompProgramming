@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MathExpressionAnalysis.Object;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -35,13 +36,14 @@ namespace InputCreatorForCompProgramming
 
             InputInfoBase inputInfo = null;
             formEditInputInfo.variableNameList = this.getVariableNameList();
+            formEditInputInfo.availableVariableMap = this.getAvailableVariableMap();
 
             // フォームを開いて結果を受け取る
             DialogResult dialogResult = formEditInputInfo.ShowDialog(this, out inputInfo);
             if (dialogResult == DialogResult.OK && inputInfo != null)
             {
                 listInputInfo.Add(inputInfo);
-                if(inputInfo.GetType() == typeof(InputInfoLoopStart))
+                if (inputInfo.GetType() == typeof(InputInfoLoopStart))
                 {
                     loopDepth++;
                 }
@@ -59,6 +61,55 @@ namespace InputCreatorForCompProgramming
             var variableNameList = new List<string>();
             foreach (InputInfoBase inputInfo in listInputInfo) variableNameList.Add(inputInfo.name);
             return variableNameList;
+        }
+
+        /// <summary>
+        /// 次の入力データ情報で利用可能な変数の連想配列を取得する。
+        /// キーは変数名で、値はデータ型である。
+        /// </summary>
+        /// <returns>利用可能な変数の連想配列。</returns>
+        private Dictionary<string, DataType> getAvailableVariableMap()
+        {
+
+            // まず、ループの深さ毎の変数データ型リストを作成していく。
+            // その中で、ループの終了点を迎えた変数たちは削除する。
+            var variableListByLoopDepth = new List<List<Tuple<string, DataType>>>();
+            variableListByLoopDepth.Add(new List<Tuple<string, DataType>>()); //1層目を入力。
+            int loopDepth = 0;
+            foreach (InputInfoBase inputInfo in listInputInfo)
+            {
+                if (inputInfo.GetType() == typeof(InputInfoInteger))
+                {
+                    variableListByLoopDepth[loopDepth].Add(new Tuple<string, DataType>(inputInfo.name, DataType.Integer));
+                }
+                else if (inputInfo.GetType() == typeof(InputInfoLoopStart))
+                {
+                    variableListByLoopDepth[loopDepth].Add(new Tuple<string, DataType>(inputInfo.name, DataType.Integer));
+                    variableListByLoopDepth.Add(new List<Tuple<string, DataType>>());
+                    loopDepth++;
+                }
+                else if (inputInfo.GetType() == typeof(InputInfoLoopEnd))
+                {
+                    variableListByLoopDepth.RemoveAt(loopDepth);
+                    loopDepth--;
+                    if(loopDepth < 0)
+                    {
+                        throw new ApplicationException("入力データ情報の状態が異常です。対応するループ開始点が存在しないループ終了点があります。");
+                    }
+                }
+            }
+
+            var variableMap = new Dictionary<string, DataType>();
+            foreach(List<Tuple<string,DataType>> variableList in variableListByLoopDepth)
+            {
+                foreach(Tuple<string,DataType> variable in variableList)
+                {
+                    variableMap.Add(variable.Item1, variable.Item2);
+                }
+            }
+
+            return variableMap;
+
         }
 
         private void btnInteger_Click(object sender, EventArgs e)

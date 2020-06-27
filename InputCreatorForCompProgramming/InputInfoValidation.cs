@@ -19,9 +19,9 @@ namespace InputCreatorForCompProgramming
         /// <param name="tree">評価対象の数式</param>
         /// <param name="dataType">期待する評価結果のデータ型</param>
         /// <returns>期待するデータ型になる場合はtrueを返す。</returns>
-        public static bool validateMathTreeDataType(MathTree tree, DataType dataType)
+        public static bool validateMathTreeDataType(MathTree tree, DataType dataType, Dictionary<string,DataType> variableMap)
         {
-            return tree.checkDataType() == dataType;
+            return tree.checkDataType(variableMap, null) == dataType;
         }
 
         /// <summary>
