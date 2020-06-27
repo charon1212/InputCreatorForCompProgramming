@@ -12,12 +12,8 @@ using System.Windows.Forms;
 
 namespace InputCreatorForCompProgramming
 {
-    public partial class FormEditLoop : Form
+    public partial class FormEditLoop : FormEditInputInfo
     {
-        // 戻り値保存用のデータ
-        InputInfoLoopStart inputInfoLoopStart = null;
-        // 変数名のリスト
-        public List<string> variableNameList { private get; set; }
 
         public FormEditLoop()
         {
@@ -33,21 +29,6 @@ namespace InputCreatorForCompProgramming
         private void rbDivisorLastCustom_CheckedChanged(object sender, EventArgs e)
         {
             txtDivisorLastCustom.Enabled = rbDivisorLastCustom.Checked;
-        }
-
-        public DialogResult ShowDialog(IWin32Window owner, out InputInfoBase inputInfo)
-        {
-            var dialogResult = this.ShowDialog(owner);
-            if (dialogResult == DialogResult.OK && inputInfoLoopStart != null)
-            {
-                inputInfo = this.inputInfoLoopStart;
-                return DialogResult.OK;
-            }
-            else
-            {
-                inputInfo = null;
-                return DialogResult.Cancel;
-            }
         }
 
         private void btnEnter_Click(object sender, EventArgs e)
@@ -118,7 +99,7 @@ namespace InputCreatorForCompProgramming
             // FormEditIntegerの戻り値設定
             var inputInfoLoopStart = new InputInfoLoopStart(treeLoopMin, treeLoopMax, txtLoopMin.Text, txtLoopMax.Text, divisorInter, divisorLast);
             inputInfoLoopStart.name = name;
-            this.inputInfoLoopStart = inputInfoLoopStart;
+            this.inputInfo = inputInfoLoopStart;
 
             // DialogResultの設定
             this.DialogResult = DialogResult.OK;

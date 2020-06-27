@@ -23,51 +23,56 @@ namespace InputCreatorForCompProgramming
             InitializeComponent();
         }
 
-        private void btnInteger_Click(object sender, EventArgs e)
+        #region "入力データ情報新規作成"
+
+        /// <summary>
+        /// 入力データ情報登録フォームに必要な情報を渡して入力データ情報を作成する。
+        /// 作成に成功した場合はメインフォームのリストに登録する。
+        /// </summary>
+        /// <param name="formEditInputInfo">入力データ情報登録フォーム。</param>
+        private void btnNewInputInfo_Click(FormEditInputInfo formEditInputInfo)
         {
+
             InputInfoBase inputInfo = null;
-            var formEditInteger = new FormEditInteger();
-            formEditInteger.variableNameList = this.getVariableNameList();
+            formEditInputInfo.variableNameList = this.getVariableNameList();
 
             // フォームを開いて結果を受け取る
-            DialogResult dialogResult = formEditInteger.ShowDialog(this, out inputInfo);
-
+            DialogResult dialogResult = formEditInputInfo.ShowDialog(this, out inputInfo);
             if (dialogResult == DialogResult.OK && inputInfo != null)
             {
                 listInputInfo.Add(inputInfo);
+                if(inputInfo.GetType() == typeof(InputInfoLoopStart))
+                {
+                    loopDepth++;
+                }
             }
             showListInputInfo();
 
         }
+
+        /// <summary>
+        /// 現在利用しているすべての変数名のリストを取得する。
+        /// </summary>
+        /// <returns>変数名のリスト</returns>
+        private List<string> getVariableNameList()
+        {
+            var variableNameList = new List<string>();
+            foreach (InputInfoBase inputInfo in listInputInfo) variableNameList.Add(inputInfo.name);
+            return variableNameList;
+        }
+
+        private void btnInteger_Click(object sender, EventArgs e)
+        {
+            btnNewInputInfo_Click(new FormEditInteger());
+        }
         private void btnList_Click(object sender, EventArgs e)
         {
-            InputInfoBase inputInfo = null;
-            var formEditList = new FormEditList();
-            formEditList.variableNameList = this.getVariableNameList();
-
-            // フォームを開いて結果を受け取る
-            DialogResult dialogResult = formEditList.ShowDialog(this, out inputInfo);
-            if (dialogResult == DialogResult.OK && inputInfo != null)
-            {
-                listInputInfo.Add(inputInfo);
-            }
-            showListInputInfo();
+            btnNewInputInfo_Click(new FormEditList());
         }
 
         private void btnLoopStart_Click(object sender, EventArgs e)
         {
-            InputInfoBase inputInfo = null;
-            var formEditLoop = new FormEditLoop();
-            formEditLoop.variableNameList = this.getVariableNameList();
-
-            // フォームを開いて結果を受け取る
-            DialogResult dialogResult = formEditLoop.ShowDialog(this, out inputInfo);
-            if (dialogResult == DialogResult.OK && inputInfo != null)
-            {
-                listInputInfo.Add(inputInfo);
-                loopDepth++;
-            }
-            showListInputInfo();
+            btnNewInputInfo_Click(new FormEditLoop());
         }
 
         private void btnLoopLast_Click(object sender, EventArgs e)
@@ -82,6 +87,8 @@ namespace InputCreatorForCompProgramming
             loopDepth--;
             showListInputInfo();
         }
+
+        #endregion
 
         private void btnCreateInputData_Click(object sender, EventArgs e)
         {
@@ -118,13 +125,6 @@ namespace InputCreatorForCompProgramming
             string indent = "";
             for (int i = 0; i < loopDepth; i++) indent += "  ";
             return indent;
-        }
-
-        private List<string> getVariableNameList()
-        {
-            var variableNameList = new List<string>();
-            foreach (InputInfoBase inputInfo in listInputInfo) variableNameList.Add(inputInfo.name);
-            return variableNameList;
         }
 
     }

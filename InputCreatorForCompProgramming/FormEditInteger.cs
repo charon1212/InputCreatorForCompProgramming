@@ -13,13 +13,8 @@ using System.Windows.Forms;
 
 namespace InputCreatorForCompProgramming
 {
-    public partial class FormEditInteger : Form
+    public partial class FormEditInteger : FormEditInputInfo
     {
-
-        // 戻り値保存用のデータ
-        InputInfoInteger inputInfoInteger = null;
-        // 変数名のリスト
-        public List<string> variableNameList { private get;  set; }
 
         public FormEditInteger()
         {
@@ -29,21 +24,6 @@ namespace InputCreatorForCompProgramming
         private void rbDivisorCustom_CheckedChanged(object sender, EventArgs e)
         {
             txtDivisorCustom.Enabled = rbDivisorCustom.Checked;
-        }
-
-        public DialogResult ShowDialog(IWin32Window owner, out InputInfoBase inputInfo)
-        {
-            var dialogResult = this.ShowDialog(owner);
-            if (dialogResult == DialogResult.OK && inputInfoInteger != null)
-            {
-                inputInfo = this.inputInfoInteger;
-                return DialogResult.OK;
-            }
-            else
-            {
-                inputInfo = null;
-                return DialogResult.Cancel;
-            }
         }
 
         private void btnEnter_Click(object sender, EventArgs e)
@@ -106,7 +86,7 @@ namespace InputCreatorForCompProgramming
             // FormEditIntegerの戻り値設定
             var inputinfoInteger = new InputInfoInteger(treeMin, treeMax, txtMin.Text, txtMax.Text, divisor);
             inputinfoInteger.name = name;
-            this.inputInfoInteger = inputinfoInteger;
+            this.inputInfo = inputinfoInteger;
 
             // DialogResultの設定
             this.DialogResult = DialogResult.OK;
