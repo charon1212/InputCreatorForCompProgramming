@@ -92,7 +92,7 @@ namespace InputCreatorForCompProgramming
                 {
                     variableListByLoopDepth.RemoveAt(loopDepth);
                     loopDepth--;
-                    if(loopDepth < 0)
+                    if (loopDepth < 0)
                     {
                         throw new ApplicationException("入力データ情報の状態が異常です。対応するループ開始点が存在しないループ終了点があります。");
                     }
@@ -100,9 +100,9 @@ namespace InputCreatorForCompProgramming
             }
 
             var variableMap = new Dictionary<string, DataType>();
-            foreach(List<Tuple<string,DataType>> variableList in variableListByLoopDepth)
+            foreach (List<Tuple<string, DataType>> variableList in variableListByLoopDepth)
             {
-                foreach(Tuple<string,DataType> variable in variableList)
+                foreach (Tuple<string, DataType> variable in variableList)
                 {
                     variableMap.Add(variable.Item1, variable.Item2);
                 }
@@ -178,5 +178,27 @@ namespace InputCreatorForCompProgramming
             return indent;
         }
 
+        private void btnDeleteInputInfo_Click(object sender, EventArgs e)
+        {
+            int index = listBoxInputInfo.SelectedIndex;
+            if (index == -1)
+            {
+                MessageBox.Show("入力データ情報を選択してください。");
+                return;
+            }
+
+            // 警告表示
+            string message = "他の入力データ情報から参照している場合、削除すると正常に計算できなくなる恐れがあります。\r\n" +
+                "また、ループ開始点を削除する場合は、その前に対応する終了点を削除してください。\r\n" +
+                "削除しますか？";
+            string caption = "警告";
+            DialogResult result = MessageBox.Show(message, caption, MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
+            if (result == DialogResult.OK)
+            {
+                listInputInfo.RemoveAt(index);
+                showListInputInfo();
+            }
+
+        }
     }
 }

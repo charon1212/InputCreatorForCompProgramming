@@ -109,6 +109,7 @@
             this.btnDeleteInputInfo.TabIndex = 3;
             this.btnDeleteInputInfo.Text = "削除";
             this.btnDeleteInputInfo.UseVisualStyleBackColor = true;
+            this.btnDeleteInputInfo.Click += new System.EventHandler(this.btnDeleteInputInfo_Click);
             // 
             // btnEditInputInfo
             // 
