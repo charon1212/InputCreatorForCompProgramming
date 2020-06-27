@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MathExpressionAnalysis.Object;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -24,7 +25,7 @@ namespace InputCreatorForCompProgramming
         /// <param name="rnd">乱数生成器を指定する。</param>
         /// <param name="arg">引数のリストを指定する。</param>
         /// <returns>入力データの文字列表現。分割文字列も含む。</returns>
-        abstract public string createInputData(Random rnd, ref Dictionary<string, string> arg);
+        abstract public string createInputData(Random rnd, ref Dictionary<string, Variable> arg);
 
     }
 }

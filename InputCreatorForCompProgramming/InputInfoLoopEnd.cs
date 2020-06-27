@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MathExpressionAnalysis.Object;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -16,7 +17,7 @@ namespace InputCreatorForCompProgramming
             string text = "ループ終了";
             return text;
         }
-        public override string createInputData(Random rnd, ref Dictionary<string, string> arg)
+        public override string createInputData(Random rnd, ref Dictionary<string, Variable> arg)
         {
             return "";
         }

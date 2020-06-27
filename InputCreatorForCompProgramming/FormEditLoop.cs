@@ -43,7 +43,7 @@ namespace InputCreatorForCompProgramming
             try
             {
                 treeLoopMin = MathExpressionAnalysisLogic.getMathTreeFromString(txtLoopMin.Text);
-                if (!InputInfoValidation.validateMathTreeDataType(treeLoopMin, DataType.Integer))
+                if (!InputInfoValidation.validateMathTreeDataType(treeLoopMin, DataType.Integer, this.availableVariableMap))
                 {
                     validateMessage += "最小値の評価結果が整数になりません。\r\n";
                 }
@@ -55,7 +55,7 @@ namespace InputCreatorForCompProgramming
             try
             {
                 treeLoopMax = MathExpressionAnalysisLogic.getMathTreeFromString(txtLoopMax.Text);
-                if (!InputInfoValidation.validateMathTreeDataType(treeLoopMax, DataType.Integer))
+                if (!InputInfoValidation.validateMathTreeDataType(treeLoopMax, DataType.Integer, this.availableVariableMap))
                 {
                     validateMessage += "最大値の評価結果が整数になりません。\r\n";
                 }

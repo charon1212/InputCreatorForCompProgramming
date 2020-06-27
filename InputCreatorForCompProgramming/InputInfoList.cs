@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MathExpressionAnalysis.Object;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -29,13 +30,13 @@ namespace InputCreatorForCompProgramming
             return text;
         }
 
-        public override string createInputData(Random rnd, ref Dictionary<string, string> arg)
+        public override string createInputData(Random rnd, ref Dictionary<string, Variable> arg)
         {
             string inputData = makeInputData(rnd, ref arg);
             return inputData + divisor;
         }
 
-        private string makeInputData(Random rnd, ref Dictionary<string, string> arg)
+        private string makeInputData(Random rnd, ref Dictionary<string, Variable> arg)
         {
             double r = rnd.NextDouble();
             int count = list.Count;

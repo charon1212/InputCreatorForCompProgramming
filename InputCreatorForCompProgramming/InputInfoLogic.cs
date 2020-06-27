@@ -59,7 +59,7 @@ namespace InputCreatorForCompProgramming
         /// <returns></returns>
         public static string createInputInfo(List<InputInfoBase> list, Random rnd)
         {
-            var arg = new Dictionary<string, string>(); // のちの機能拡張(他の入力情報を制約に使う(#13))で使う予定
+            var arg = new Dictionary<string, Variable>(); // のちの機能拡張(他の入力情報を制約に使う(#13))で使う予定
             return createInputInfo(list, rnd, ref arg);
         }
 
@@ -70,7 +70,7 @@ namespace InputCreatorForCompProgramming
         /// <param name="rnd">乱数生成器。</param>
         /// <param name="arg">引数情報。</param>
         /// <returns></returns>
-        private static string createInputInfo(List<InputInfoBase> list, Random rnd, ref Dictionary<string, string> arg)
+        private static string createInputInfo(List<InputInfoBase> list, Random rnd, ref Dictionary<string, Variable> arg)
         {
 
             // 上からi番目の「ループの深さ1以上であるグループ」の入力データ情報のリストのリスト。
@@ -91,16 +91,47 @@ namespace InputCreatorForCompProgramming
                     long loopLength = inputInfoLoopStart.getLoopLength(rnd, ref arg);
                     string divisorInter = inputInfoLoopStart.divisorInter;
                     string divisorLast = inputInfoLoopStart.divisorLast;
+                    // ループの中に入る前の変数情報を記憶する。
+                    Dictionary<string, Variable> beforeVariableMap = deepCopyVariableMap(arg);
                     for (long i = 1; i <= loopLength; i++)
                     {
                         inputInfoAllStr += createInputInfo(inLoopInputInfoList[cntInLoopInputInfoList], rnd, ref arg);
                         inputInfoAllStr += (i == loopLength) ? divisorLast : divisorInter;
+                        // ループに入る前の変数情報に戻す。
+                        arg = deepCopyVariableMap(beforeVariableMap);
                     }
                     cntInLoopInputInfoList++;
                 }
             }
 
             return inputInfoAllStr;
+        }
+
+        private static Dictionary<string,Variable> deepCopyVariableMap(Dictionary<string,Variable> variableMap)
+        {
+
+            var result = new Dictionary<string, Variable>();
+            foreach(KeyValuePair<string,Variable> variable in variableMap)
+            {
+                Variable newVariable;
+                switch (variable.Value.type)
+                {
+                    case DataType.Boolean:
+                        newVariable = new Variable(variable.Value.getValue().valueBool);
+                        break;
+                    case DataType.Integer:
+                        newVariable = new Variable(variable.Value.getValue().valueInteger);
+                        break;
+                    case DataType.Decimal:
+                        newVariable = new Variable(variable.Value.getValue().valueDecimal);
+                        break;
+                    default:
+                        throw new ArgumentException("変数のデータ型にNone又はDecimlListが設定されています。");
+                }
+                result.Add(variable.Key, newVariable);
+            }
+            return result;
+
         }
 
         /// <summary>
