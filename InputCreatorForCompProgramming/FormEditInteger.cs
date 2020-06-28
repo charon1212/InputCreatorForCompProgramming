@@ -103,7 +103,7 @@ namespace InputCreatorForCompProgramming
 
         private void FormEditInteger_Load(object sender, EventArgs e)
         {
-
+            txtName.Text = InputInfoLogic.getNotDupulicatedVariableName(this.variableNameList);
         }
     }
 }

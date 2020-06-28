@@ -107,11 +107,11 @@ namespace InputCreatorForCompProgramming
             return inputInfoAllStr;
         }
 
-        private static Dictionary<string,Variable> deepCopyVariableMap(Dictionary<string,Variable> variableMap)
+        private static Dictionary<string, Variable> deepCopyVariableMap(Dictionary<string, Variable> variableMap)
         {
 
             var result = new Dictionary<string, Variable>();
-            foreach(KeyValuePair<string,Variable> variable in variableMap)
+            foreach (KeyValuePair<string, Variable> variable in variableMap)
             {
                 Variable newVariable;
                 switch (variable.Value.type)
@@ -216,6 +216,26 @@ namespace InputCreatorForCompProgramming
             {
                 return 0;
             }
+        }
+
+        private static readonly string INITIAL_VARIABLE_NAME_PREFIX = "var";
+        private static readonly int INITIAL_VARIABLE_NAME_MAX_COUNT = Int32.MaxValue;
+        /// <summary>
+        /// 変数名「varXX」(XXは数値)のうち、既存の変数名と被らない変数名を返す。
+        /// </summary>
+        /// <param name="existingVariableNameList">既存の変数名のリスト</param>
+        /// <returns>既存の変数名と被らない変数名。</returns>
+        public static string getNotDupulicatedVariableName(List<string> existingVariableNameList)
+        {
+
+            if (!existingVariableNameList.Contains(INITIAL_VARIABLE_NAME_PREFIX)) return INITIAL_VARIABLE_NAME_PREFIX;
+            for (int i = 2; i < INITIAL_VARIABLE_NAME_MAX_COUNT; i++)
+            {
+                string variableName = INITIAL_VARIABLE_NAME_PREFIX + i.ToString();
+                if (!existingVariableNameList.Contains(variableName)) return variableName;
+            }
+            return "";
+
         }
 
     }

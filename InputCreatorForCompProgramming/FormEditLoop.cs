@@ -114,5 +114,9 @@ namespace InputCreatorForCompProgramming
             if (sender is TextBox textBox) textBox.SelectAll();
         }
 
+        private void FormEditLoop_Load(object sender, EventArgs e)
+        {
+            txtName.Text = InputInfoLogic.getNotDupulicatedVariableName(this.variableNameList);
+        }
     }
 }

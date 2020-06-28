@@ -254,7 +254,6 @@
             this.txtName.Name = "txtName";
             this.txtName.Size = new System.Drawing.Size(100, 19);
             this.txtName.TabIndex = 1;
-            this.txtName.Text = "var";
             this.txtName.Enter += new System.EventHandler(this.textBox_Enter);
             // 
             // labelName
@@ -285,6 +284,7 @@
             this.Controls.Add(this.groupDivisorInter);
             this.Name = "FormEditLoop";
             this.Text = "ループ";
+            this.Load += new System.EventHandler(this.FormEditLoop_Load);
             this.groupDivisorInter.ResumeLayout(false);
             this.groupDivisorInter.PerformLayout();
             this.groupDivisorLast.ResumeLayout(false);
