@@ -183,7 +183,6 @@
             this.txtName.Name = "txtName";
             this.txtName.Size = new System.Drawing.Size(100, 19);
             this.txtName.TabIndex = 1;
-            this.txtName.Text = "var";
             this.txtName.Enter += new System.EventHandler(this.textBox_Enter);
             // 
             // labelName
