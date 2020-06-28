@@ -32,6 +32,11 @@ namespace InputCreatorForCompProgramming
 
         private void btnItemAdd_Click(object sender, EventArgs e)
         {
+            addItem();
+        }
+
+        private void addItem()
+        {
             string item = txtItem.Text;
             if (item.Length == 0)
             {
@@ -40,6 +45,8 @@ namespace InputCreatorForCompProgramming
             }
             inputValueList.Add(item);
             redrawList();
+            txtItem.Focus();
+            txtItem.SelectAll();
         }
 
         private void btnItemDelete_Click(object sender, EventArgs e)
@@ -110,6 +117,16 @@ namespace InputCreatorForCompProgramming
         private void FormEditList_Load(object sender, EventArgs e)
         {
             txtName.Text = InputInfoLogic.getNotDupulicatedVariableName(this.variableNameList);
+        }
+
+        private void txtItem_KeyDown(object sender, KeyEventArgs e)
+        {
+
+            if(e.KeyCode == Keys.Enter)
+            {
+                addItem();
+            }
+
         }
     }
 }
