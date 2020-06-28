@@ -163,6 +163,7 @@
             this.txtItem.Size = new System.Drawing.Size(172, 19);
             this.txtItem.TabIndex = 3;
             this.txtItem.Enter += new System.EventHandler(this.textBox_Enter);
+            this.txtItem.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtItem_KeyDown);
             // 
             // btnItemDelete
             // 
